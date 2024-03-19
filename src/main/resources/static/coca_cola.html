@@ -1,83 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coca Cola</title>
-  <style>
-
-body {
-        --first-color: hsl(351,80%,49%);
-        --first-color-alt: hsl(358, 93%, 58%);
-        --first-color-light: hsl(356, 74%, 48%);
-        background-image: linear-gradient(to bottom right, var(--first-color), var(--first-color-alt));
-    }
-
-    .container {
-        display: flex;
-        align-items: center;
-    }
-
-    .text {
-        margin-right: 20px; /* Aggiungi spazio tra il testo e l'immagine */
-    }
-
-    .image {
-        margin-left: auto; /* Posiziona l'immagine più a destra */
-        animation: slideIn 1s;
-    }
-
-    .image img {
-        max-width: 80%; /* Imposta la larghezza massima dell'immagine */
-        margin-left: 230px;
-        height: 700px;
-    }
-
-    #title {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 60px;
-        padding: 30px;
-        margin-left: 100px;
-        animation: slideInLeft 2s;
-    }
-
-    #text {
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 50px;
-        padding: 30px;
-        margin-left: 100px;
-        animation: slideInLeft 4s;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(300%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-200%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca Cola</title>
+    <link rel="stylesheet" href="stylesheets/css_coca_cola.css">
 </head>
 <body>
-    <div class="container">
-        <div class="text">
-            <h1 id="title">A Different Taste</h1>
-            <h1 id="text">Refresh the World Be Different</h1>
-        </div>
-        <div class="image">
-            <img src="images/coca_cola.png">
-        </div>
+<div class="container">
+    <div class="text">
+        <h1 id="title">A Different Taste</h1>
+        <h1 id="text">Refresh the World Be Different</h1>
     </div>
+    <div class="image">
+        <img src="images/coca_cola.png">
+    </div>
+</div>
 </body>
 </html>

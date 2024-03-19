@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b7dfff;
+    animation: changeBackgroundColor 5s infinite;
+}
+
+@keyframes changeBackgroundColor {
+    0% {
+        background-color: #f0f0f0;
+    }
+    40% {
+        background-color: #ffcc00;
+    }
+    80% {
+        background-color: #ff6666;
+    }
+    100% {
+        background-color: #f0f0f0;
+    }
+}
+
+.banner {
+    width: 50%;
+    height: 80%;
+    background-color: #f6f6f6;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #333;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation-delay: 2s;
+    animation: slideInBanner 2s ease-out, restartBannerAnimation 5s linear infinite;
+}
+
+@keyframes slideInBanner {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    animation: moveText 5s infinite alternate;
+}
+
+@keyframes moveText {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        color: #ff5757;
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(10deg);
+        color: #57ff8a;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        color: #57a0ff;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+#first-text {
+    font-size: 50px;
+    margin-top: 80px;
+    animation: slideInFirstText 1s forwards;
+}
+
+#second-text {
+    font-size: 50px;
+    animation: slideInSecondText 2s forwards;
+}
+
+#third-text {
+    font-size: 40px;
+    margin-bottom: 60px;
+    padding: 20px;
+    color: red;
+    animation: slideInThirdText 3s forwards;
+}
+
+@keyframes slideInFirstText {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInSecondText {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInThirdText {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

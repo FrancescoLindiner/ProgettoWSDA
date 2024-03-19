@@ -5,133 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vestiti</title>
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .yellow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #F4C446;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        .black {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            clip-path: polygon(0 0, 100% 0, 0% 100%);
-        }
-
-        img {
-            position: absolute;
-            top: 58%;
-            left: 52%;
-            width: 40%;
-            transform: translate(-50%, -50%);
-        }
-
-        #text,
-        #second-text {
-            font-weight: bold;
-            font-size: 50px;
-            margin-left: 30px;
-            color: white;
-            animation: slideInLeft 2s;
-        }
-
-        #second-text {
-            margin-top: 120px;
-            color: white;
-            animation: slideInLeft 3s;
-        }
-
-        #discount {
-            color: black;
-            text-align: right;
-            margin-top: 250px;
-            margin-right: 110px;
-            font-size: 50px;
-            animation: slideIn 4s;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(300%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-200%);
-            }
-            to {
-                transform: translateX(0);
-        }
-        }
-
-        .animate-charcter {
-            font-size: 170px;
-            color: black;
-            margin-right: 70px;
-            margin-top: 100px;
-            text-align: right;
-            text-transform: uppercase;
-            background-image: linear-gradient(-225deg,
-                    #231557 0%,
-                    #44107a 29%,
-                    #ff1361 67%,
-                    #fff800 100%);
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            text-fill-color: transparent;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textclip 2s linear infinite, slideIn 5s;
-
-            font-size: 190px;
-        }
-
-        @keyframes textclip {
-            to {
-                background-position: 200% center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="stylesheets/css_vestiti.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="yellow">
-            <p id="discount">Sconti fino al</p>
-            <p class="animate-charcter">50%</p>
-        </div>
-        <div class="black">
-            <p id="text">Rinnova il tuo stile con la nostra collezione<br> primavera/estate!</p>
-            <p id="second-text">Scopri le ultime <br> tendenze da<br>indossare.</p>
-        </div>
-        <img src="images/vestiti.png" alt="Immagine">
+<div class="container">
+    <div class="yellow">
+        <p id="discount">Sconti fino al</p>
+        <p class="animate-character">50%</p>
     </div>
+    <div class="black">
+        <p id="text">Rinnova il tuo stile con la nostra collezione<br> primavera/estate!</p>
+        <p id="second-text">Scopri le ultime <br> tendenze da<br>indossare.</p>
+    </div>
+    <img src="images/vestiti.png" alt="Immagine">
+</div>
 </body>
 
 </html>
