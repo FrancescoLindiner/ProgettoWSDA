@@ -1,7 +1,6 @@
 body {
     --first-color: hsl(351,80%,49%);
     --first-color-alt: hsl(358, 93%, 58%);
-    --first-color-light: hsl(356, 74%, 48%);
     background-image: linear-gradient(to bottom right, var(--first-color), var(--first-color-alt));
 }
 
@@ -10,34 +9,26 @@ body {
     align-items: center;
 }
 
-.text {
-    margin-right: 20px;
-}
-
 .image {
     margin-left: auto;
-    animation: slideIn 1s;
+    animation: slideIn 2s;
 }
 
 .image img {
-    max-width: 80%;
-    margin-left: 230px;
+    max-width: 100%;
+    margin-left: 40px;
     height: 700px;
 }
 
 #title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 60px;
-    padding: 30px;
-    margin-left: 100px;
     animation: slideInLeft 2s;
 }
 
-#text {
+.text {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 50px;
-    padding: 30px;
-    margin-left: 100px;
+    font-size: 35px;
+    margin-left: 90px;
     animation: slideInLeft 4s;
 }
 
