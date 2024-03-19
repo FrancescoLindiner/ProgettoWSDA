@@ -79,6 +79,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    font-weight: bold;
     text-align: center;
 }
 

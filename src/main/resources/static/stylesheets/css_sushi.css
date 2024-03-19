@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    overflow: hidden;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.advertisement {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 1s;
+}
+
+h1 {
+    color: #333;
+    font-size: 3em;
+}
+
+p {
+    color: #555;
+    font-size: 1.2em;
+}
+
+.sushi-container {
+    position: absolute;
+    top: 25%;
+    left: -100px;
+    animation: slide 5s linear forwards;
+}
+
+@keyframes slide {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: calc(100% + 100px);
+    }
+}
+
+.sushi-img {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.social {
+    margin-top: 30px;
+}
+
+.promozione{
+    margin-top: 50px;
+}
+
+.social img {
+    width: 40px;
+    margin: 0 10px;
+    filter: none;
+}
+
+.advertisement {
+    animation: fadeIn 1s 5s forwards;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#image_sushi {
+    width: 35%;
+    border-radius: 10px;
+    border: 2px solid yellow;
+    animation: pulse 2s infinite; /* Applica l'animazione pulse */
+}
+
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.advertisement .image-container {
+    display: inline-block;
+    border: 5px solid #ccc; /* Aggiungi il bordo qui */
+    padding: 10px; /* Aggiungi spazio intorno all'immagine */
+}
+
+.advertisement .sushi-img {
+    width:100px;
+}
+
+
+#text{
+    color: black;
+}
