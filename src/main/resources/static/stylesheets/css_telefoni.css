@@ -87,15 +87,59 @@ body {
     83.3%,95.96% {transform:translate3d(0,-25%,0);}
 }
 
+@keyframes animazioneTraslazioneScalaTelefono1 {
+    0% {
+        left: -100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        left: 16.1%;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        left: 16.1%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes animazioneTraslazioneScalaTelefono2 {
+    0% {
+        right: -100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        right: -7%;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        right: -7%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes animazioneTraslazioneScalaTelefono3 {
+    0% {
+        top: 150%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        top: 55%;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        top: 55%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 #telefono1 {
     width: 25%;
     height: 60%;
     position: absolute;
     top: 55%;
     left: 240px;
-    transform: translate(-50%, -50%);
     border-radius: 40px;
-    animation: animazioneDaSinistraADestra 2s;
+    animation: animazioneTraslazioneScalaTelefono1 4s infinite alternate;
 }
 
 #telefono2 {
@@ -104,9 +148,8 @@ body {
     position: absolute;
     top: 55%;
     right: -100px;
-    transform: translate(-50%, -50%);
     border-radius: 18px;
-    animation: animazioneDaDestraASinistra 2s;
+    animation: animazioneTraslazioneScalaTelefono2 6s infinite alternate;
 }
 
 #telefono3 {
@@ -115,9 +158,8 @@ body {
     position: absolute;
     top: 55%;
     right: 375px;
-    transform: translate(-50%, -50%);
     border-radius: 30px;
-    animation: animazioneDalBassoAllAlto 2s;
+    animation: animazioneTraslazioneScalaTelefono3 8s infinite alternate;
 }
 
 @keyframes animazioneDaSinistraADestra {
@@ -143,6 +185,6 @@ body {
         right: -100%;
     }
     to {
-        right: -6.1%;
+        right: -7%;
     }
 }
