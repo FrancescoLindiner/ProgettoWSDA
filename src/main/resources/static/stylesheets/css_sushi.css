@@ -84,7 +84,7 @@ p {
     width: 35%;
     border-radius: 10px;
     border: 2px solid yellow;
-    animation: pulse 2s infinite; /* Applica l'animazione pulse */
+    animation: pulse 2s infinite;
 }
 
 
@@ -97,8 +97,8 @@ p {
 
 .advertisement .image-container {
     display: inline-block;
-    border: 5px solid #ccc; /* Aggiungi il bordo qui */
-    padding: 10px; /* Aggiungi spazio intorno all'immagine */
+    border: 5px solid #ccc;
+    padding: 10px;
 }
 
 .advertisement .sushi-img {

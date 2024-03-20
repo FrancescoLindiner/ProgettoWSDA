@@ -198,9 +198,9 @@ h1 span {
 
 #div3 {
     position: absolute;
-    bottom: 0px; /* Imposta la distanza dal fondo della finestra */
-    left: 73%; /* Posiziona il div a metà della larghezza della finestra */
-    transform: translateX(-50%); /* Centra il div rispetto al suo centro */
+    bottom: 0px;
+    left: 73%;
+    transform: translateX(-50%);
 }
 
 
