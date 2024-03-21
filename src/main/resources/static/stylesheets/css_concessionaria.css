@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px;
+    height: 13vh;
+    box-shadow: 0px 0px 20px rgba(0, 0, 255, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    max-width: 60%;
+    max-height: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dealer-info {
+    position: absolute;
+    margin: 5px 0;
+    top: 5px;
+    right: 20px;
+    text-align: right;
+    width: calc(100% - 60px);
+    font-size:smaller;
+}
+
+.car-details {
+    color: #666;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.welcome-container {
+    border: 2px solid #0000FF;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    width: calc(100% - 40px);
+    height: 8vh;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: blue;
+    padding: 20px;
+    position: absolute;
+    top: 40vh;
+    right: 1%;
+    border: 2px solid #0000FF;
+    border-radius: 10px;
+}
+
+
+.sidebar-content {
+    color: white;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: auto;
+    height: 78vh;
+}
+
+.car-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.car-image:nth-child(1) {
+    animation: zoomEffect 5s infinite;
+}
+
+.car-image:nth-child(2) {
+    animation: zoomEffect 5s 2.5s infinite;
+}
+
+.car-image:nth-child(3) {
+    animation: zoomEffect 5s 5s infinite;
+}
+
+@keyframes zoomEffect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

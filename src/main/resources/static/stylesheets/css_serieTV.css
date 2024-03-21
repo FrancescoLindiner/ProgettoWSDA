@@ -13,17 +13,22 @@ body {
 
 .sipario {
     width: 50%;
-    height: calc(100% - 40px);
+    height: 92vh;
     background-color: #222;
     position: absolute;
-    top: 20px;
-    bottom: 20px;
+    top: 10px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     animation: aperturaSipario 5s forwards;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: yellow;
+    padding: 20px;
+    text-align: center;
 }
+
+
 
 .immagini-serie {
     display: none;
@@ -79,17 +84,17 @@ body {
     opacity: 0;
     position: absolute;
     top: 50%;
-    left: calc(60% + 300px + 20px);
+    right: -160px;
+    align-items: center;
     transform: translate(-50%, -50%);
-    z-index: 1;
     animation: showText 4s forwards;
-    font-size: 24px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .box {
     position: relative;
-    margin-bottom: 120px;
-    text-align: right;
+    margin-bottom: 150px;
     font-weight: bold;
 }
 
@@ -101,5 +106,54 @@ body {
 @keyframes showText {
     to {
         opacity: 1;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.testo_sipario {
+    opacity: 0;
+    position: absolute;
+    top: 45%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: blink 2s infinite;
+    font-size: 40px;
+    color: yellow;
+    text-align: center;
+    font-weight: bold;
+}
+
+.waviy {
+    position: relative;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+    margin-top: 30px;
+    font-size: 35px;
+}
+.waviy span {
+    position: relative;
+    display: inline-block;
+    color: black;
+    animation: waviy 2s infinite;
+    animation-delay: calc(.1s * var(--i));
+
+}
+@keyframes waviy {
+    0%,40%,100% {
+        transform: translateY(0)
+    }
+    20% {
+        transform: translateY(-20px)
     }
 }
