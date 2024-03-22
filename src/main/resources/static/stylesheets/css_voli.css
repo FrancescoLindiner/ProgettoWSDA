@@ -70,8 +70,6 @@ body {
     -moz-animation: animateCloud 30s linear infinite;
     animation: animateCloud 30s linear infinite;
 
-    -webkit-transform: scale(0.5);
-    -moz-transform: scale(0.5);
     transform: scale(0.5);
 }
 
@@ -80,8 +78,6 @@ body {
     -moz-animation: animateCloud 18s linear infinite;
     animation: animateCloud 18s linear infinite;
 
-    -webkit-transform: scale(0.4);
-    -moz-transform: scale(0.4);
     transform: scale(0.4);
 }
 
@@ -90,20 +86,17 @@ body {
     -moz-animation: animateCloud 25s linear infinite;
     animation: animateCloud 25s linear infinite;
 
-    -webkit-transform: scale(0.55);
-    -moz-transform: scale(0.55);
     transform: scale(0.55);
 }
 
 .cloud {
     background: #fff;
-    background: -moz-linear-gradient(top,  #fff 5%, #f1f1f1 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#fff), color-stop(100%,#f1f1f1));
-    background: -webkit-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-    background: -o-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-    background: -ms-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-    background: linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f1f1f1',GradientType=0 );
+    background: -moz-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -webkit-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -o-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -ms-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#f1f1f1', GradientType=0);
 
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;

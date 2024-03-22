@@ -1,0 +1,125 @@
+@keyframes slideInLeftBig {
+    0% {
+        transform: translateX(-99%);
+        opacity: 0;
+    }
+    1% {
+        transform: translateX(-99%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes rollClockwise {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scrollingBG {
+    100% {
+        background-position: -800px 0;
+    }
+}
+
+@keyframes fadeInBottomRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes fadeInBottomLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.anim-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.slideInLeftBig {
+    padding-top:50px;
+    padding-bottom:25px;
+    text-align:center;
+    animation: slideInLeftBig 2s linear;
+}
+
+.rollClockwise {
+    vertical-align:middle;
+    margin:0 auto;
+    width: 300px;
+    height: 300px;
+    animation: rollClockwise 2.5s linear infinite;
+}
+
+.scrollingBG {
+    background: url(https://opengameart.org/sites/default/files/desert_BG.png);
+    animation: scrollingBG 2s infinite linear;
+}
+
+.advertisement img {
+    height: auto;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    width: 400px;
+    height: 350px;
+    animation: fadeInBottomLeft 2s ease-in-out forwards;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    width: 350px;
+    height: 330px;
+    animation: fadeInBottomRight 2s ease-in-out forwards;
+}
+
+.advertisement-text {
+    position: absolute;
+    left: 52%;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: translate(-50%, 10%);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 60px;
+    animation: fadeInBottomCenter 5s infinite alternate;
+}
+
+@keyframes fadeInBottomCenter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 200%) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-50%, 10%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 10%) scale(1);
+    }
+}
