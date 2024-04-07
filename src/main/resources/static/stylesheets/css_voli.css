@@ -178,17 +178,16 @@ p {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     width: 100%;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+    color: white;
     font-family:Lucida Console, monospace;
     font-size: 30px;
     opacity: 0;
-    animation: fadeInLeft 10s ease forwards;
+    animation: fadeInLeft 30s ease forwards;
 }
 p.voli{
     top: 250px;
-    color: black;
     font-weight: bold;
 }
 @keyframes fadeInLeft {
