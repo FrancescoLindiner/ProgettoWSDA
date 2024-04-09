@@ -1,0 +1,17 @@
+<palinsesto>
+    <elemento durata="10">
+        <file>file_html/coca_cola.html</file>
+    </elemento>
+    <elemento durata="15">
+        <file>file_html/scarpe.html</file>
+    </elemento>
+    <elemento durata="20">
+        <file>file_html/sushi.html</file>
+    </elemento>
+    <elemento durata="20">
+        <file>file_html/serieTV.html</file>
+    </elemento>
+    <elemento durata="30">
+        <file>file_html/concessionaria.html</file>
+    </elemento>
+</palinsesto>

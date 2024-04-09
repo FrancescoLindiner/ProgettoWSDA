@@ -1,0 +1,17 @@
+<palinsesto>
+    <elemento durata="15">
+        <file>file_html/vestiti.html</file>
+    </elemento>
+    <elemento durata="10">
+        <file>file_html/scarpe.html</file>
+    </elemento>
+    <elemento durata="20">
+        <file>file_html/pneumatici.html</file>
+    </elemento>
+    <elemento durata="20">
+        <file>file_html/telefoni.html</file>
+    </elemento>
+    <elemento durata="15">
+        <file>file_html/concessionaria.html</file>
+    </elemento>
+</palinsesto>
