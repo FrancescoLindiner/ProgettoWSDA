@@ -1,8 +1,8 @@
 <palinsesto>
-    <elemento durata="25">
+    <elemento durata="30">
         <file>file_html/voli.html</file>
     </elemento>
-    <elemento durata="10">
+    <elemento durata="20">
         <file>file_html/telefoni.html</file>
     </elemento>
     <elemento durata="20">
