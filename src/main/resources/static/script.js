@@ -23,23 +23,20 @@ function updateWeather() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            const cityName = data.name; // Aggiunto il nome della città
+            const cityName = data.name;
             const temp = data.main.temp;
             const humidity = data.main.humidity;
             const weatherDescription = data.weather[0].description;
             const sunrise = new Date(data.sys.sunrise * 1000);
             const sunset = new Date(data.sys.sunset * 1000);
 
-            // Formatta l'orario di alba e tramonto come hh:mm
             const formattedSunrise = sunrise.getHours().toString().padStart(2, '0') + ':' + sunrise.getMinutes().toString().padStart(2, '0');
             const formattedSunset = sunset.getHours().toString().padStart(2, '0') + ':' + sunset.getMinutes().toString().padStart(2, '0');
 
-            // Visualizza tutte le informazioni nella info-bar in italiano
             document.getElementById('weather').innerText = `${temp.toFixed(1)}°C - umidità ${humidity}% - ${weatherDescription}`;
             document.getElementById('sunrise').innerText = `Alba: ${formattedSunrise}`;
             document.getElementById('sunset').innerText = `Tramonto: ${formattedSunset}`;
 
-            // Aggiungi il nome della città all'inizio dell'info-bar
             document.getElementById('city').innerText = cityName;
         })
         .catch(error => console.error('Errore nel recupero dei dati meteo:', error));
@@ -48,16 +45,14 @@ function updateWeather() {
 updateWeather();
 setInterval(updateWeather, 3600000);
 
-// Carica e esegue il palinsesto
 function loadNextContent() {
-    fetch('file_xml/palinsesto5.xml')
+    fetch('file_xml/palinsesto.xml')
         .then(response => response.text())
         .then(data => {
             // Parse XML
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(data, 'text/xml');
 
-            // Estrai elementi dal documento XML
             const elements = xmlDoc.getElementsByTagName('elemento');
             const palinsesto = [];
             for (let i = 0; i < elements.length; i++) {
@@ -66,7 +61,6 @@ function loadNextContent() {
                 palinsesto.push({ durata, file });
             }
 
-            // Esegui il palinsesto
             let currentIndex = 0;
             function playNext() {
                 const elemento = palinsesto[currentIndex];
