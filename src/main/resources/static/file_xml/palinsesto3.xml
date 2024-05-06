@@ -3,18 +3,18 @@
 <palinsesto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="../palinsesto.xsd">
     <elemento durata="15">
-        <file>../file_html/vestiti.html</file>
+        <file>../../file_html/vestiti.html</file>
     </elemento>
     <elemento durata="10">
-        <file>../file_html/scarpe.html</file>
+        <file>../../file_html/scarpe.html</file>
     </elemento>
     <elemento durata="20">
-        <file>../file_html/pneumatici.html</file>
+        <file>../../file_html/pneumatici.html</file>
     </elemento>
     <elemento durata="20">
-        <file>../file_html/telefoni.html</file>
+        <file>../../file_html/telefoni.html</file>
     </elemento>
     <elemento durata="15">
-        <file>../file_html/concessionaria.html</file>
+        <file>../../file_html/concessionaria.html</file>
     </elemento>
 </palinsesto>

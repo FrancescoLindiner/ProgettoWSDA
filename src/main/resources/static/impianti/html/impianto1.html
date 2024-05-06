@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palinsesto LED Wall</title>
+    <link rel="stylesheet" href="../css/css_impianti.css">
+</head>
+<body>
+<div id="content"></div>
+<div id="info-bar">
+    <span id="city"></span>
+    <span id="datetime"></span>
+    <span id="time"></span>
+    <span id="sunrise"></span>
+    <span id="sunset"></span>
+    <span id="weather"></span>
+</div>
+<script src="../javascript/javascript_impianti.js"></script>
+<script>
+    const idImpianto = "I01";
+    const idPalinsesto = "P04";
+
+    loadNextContent('../../file_xml/palinsesto4.xml', idImpianto, idPalinsesto);
+</script>
+</body>
+</html>
