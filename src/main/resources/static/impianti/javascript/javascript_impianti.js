@@ -94,20 +94,17 @@ function inviaSegnalazione(idImpianto, idPalinsesto, idCartellone, durata) {
         durata: durata
     };
 
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Errore durante la richiesta.');
-            }
+    // async di default è uguale a true
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function() {
             console.log('Segnalazione inviata con successo!');
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Errore durante l\'invio della segnalazione:', error);
-        });
+        }
+    });
 }
