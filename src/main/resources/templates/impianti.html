@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Impianti</title>
+    <script src="/GestioneImpianti/js_gestione_impianti.js"></script>
+</head>
+<body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // Recupera i dati degli impianti dal modello
+    var impianti = /*[[${impianti}]]*/ [];
+
+    // Esegui questa funzione al caricamento della pagina
+    $(document).ready(function(){
+        // Itera su ogni impianto nell'array
+        impianti.forEach(function(impianto) {
+            // Ottieni i valori desiderati
+            var idImpianto = impianto.idImpianto;
+            var stato = impianto.stato;
+            var descrizione = impianto.descrizione;
+            var latitudine = impianto.latitudine;
+            var longitudine = impianto.longitudine;
+            var palinsesto = palinsesto
+            // Passa i valori alla tua funzione
+            aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesto);
+        });
+    });
+    /*]]>*/
+</script>
+
+</body>
+</html>

@@ -1,9 +1,8 @@
 package com.progetto.progettowsda.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Palinsesto {
@@ -12,6 +11,9 @@ public class Palinsesto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String idImpianto;
     private String idPalinsesto;
+
+    @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Palinsesto> palinsesti;
 
     public String getIdImpianto() {
         return idImpianto;

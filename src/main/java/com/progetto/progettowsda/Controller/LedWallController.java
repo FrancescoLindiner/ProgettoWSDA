@@ -24,6 +24,7 @@ public class LedWallController {
             if (palinsesto != null) {
                 model.addAttribute("idPalinsesto", palinsesto.getIdPalinsesto());
                 model.addAttribute("idImpianto", id);
+
                 return "view"; // restituisco la vista
             }
         }
