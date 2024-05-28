@@ -1,0 +1,15 @@
+<script src="/impianti/javascript/javascript_impianti.js"></script>
+<script th:inline="javascript">
+
+    const idPalinsesto_intero = [[${idPalinsesto}]]; // idPalinsesto_intero ha la forma P0X
+    const idPalinsesto = idPalinsesto_intero[idPalinsesto_intero.length - 1];
+
+    var url = window.location.href;
+
+    const match = url.match(/impianto(\d+)/);
+
+    // Estrai l'ID dell'impianto dalla corrispondenza della regex
+    const idImpianto_query = match ? match[1] : null;
+
+    loadNextContent("../../file_xml/palinsesto" + idPalinsesto +".xml", "I0"+idImpianto_query, idPalinsesto);
+</script>

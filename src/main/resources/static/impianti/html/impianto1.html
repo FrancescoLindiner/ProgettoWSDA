@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,15 +20,13 @@
 </div>
 <script src="../javascript/javascript_impianti.js"></script>
 <script>
-    //const idImpianto = "I01";
-
     const urlParams = new URLSearchParams(window.location.search);
     const idImpianto = urlParams.get('id');
 
-    $.get("/getId", { id: idImpianto })
-        .done(function(data) {
-            // console.log("ID ricevuto:", data); // Stampa l'ID ricevuto
-            // Qui puoi fare ciò che devi fare con l'ID ricevuto
+    $.get("/wsda", { id: idImpianto })
+        .done(function(data) { // data contiene la vista restituita
+
+            $('#content').html(data); // Aggiorna il contenuto della pagina con la vista restituita
         })
         .fail(function() {
             console.error("Error loading ID.");

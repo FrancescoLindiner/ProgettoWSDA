@@ -19,11 +19,17 @@
 </div>
 <script src="../javascript/javascript_impianti.js"></script>
 <script>
-    const idImpianto = "I05";
-    const idPalinsesto = "P02";
+    const urlParams = new URLSearchParams(window.location.search);
+    const idImpianto = urlParams.get('id');
+    
+    $.get("/wsda", { id: idImpianto })
+        .done(function(data) { // data contiene la vista restituita
 
-    loadNextContent('../../file_xml/palinsesto2.xml', idImpianto, idPalinsesto);
-
+            $('#content').html(data); // Aggiorna il contenuto della pagina con la vista restituita
+        })
+        .fail(function() {
+            console.error("Error loading ID.");
+        });
 </script>
 </body>
 </html>

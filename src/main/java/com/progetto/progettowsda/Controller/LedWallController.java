@@ -14,16 +14,21 @@ public class LedWallController {
     @Autowired
     private PalinsestoService palinsestoService;
 
-    @GetMapping("/getId")
-    public String handleQueryRequest(@RequestParam("id") String id, Model model) {
-        System.out.println("ID_ricevuto: " + id);
+    @GetMapping("/wsda")
+    public String handleQueryRequest(@RequestParam(name="id", required=false) String id, Model model) {
+        //System.out.println("ID_ricevuto: " + id);
 
-        Palinsesto palinsesto = palinsestoService.getPalinsestoByIdImpianto(id);
+        if (id != null && !id.isEmpty()) {
+            Palinsesto palinsesto = palinsestoService.getPalinsestoByIdImpianto(id);
 
-        System.out.println(palinsesto.getIdPalinsesto());
+            if (palinsesto != null) {
+                model.addAttribute("idPalinsesto", palinsesto.getIdPalinsesto());
+                model.addAttribute("idImpianto", id);
+                return "view"; // restituisco la vista
+            }
+        }
 
-        model.addAttribute("palinsesto", palinsesto);
-
-        return "nomeDellaVista";
+        model.addAttribute("errorMessage", "Errore: Nessun palinsesto trovato per l'ID specificato.");
+        return "errorView";
     }
 }
