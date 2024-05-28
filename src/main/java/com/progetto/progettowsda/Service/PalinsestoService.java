@@ -5,6 +5,8 @@ import com.progetto.progettowsda.Repository.PalinsestoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PalinsestoService {
 
@@ -13,5 +15,9 @@ public class PalinsestoService {
 
     public Palinsesto getPalinsestoByIdImpianto(String idImpianto) {
         return palinsestoRepository.findByIdImpianto(idImpianto);
+    }
+
+    public List<Palinsesto> getAllPalinsesti() {
+        return palinsestoRepository.findAll();
     }
 }

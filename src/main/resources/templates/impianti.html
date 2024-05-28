@@ -3,6 +3,7 @@
 <head>
     <title>Impianti</title>
     <script src="/GestioneImpianti/js_gestione_impianti.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -10,6 +11,7 @@
     /*<![CDATA[*/
     // Recupera i dati degli impianti dal modello
     var impianti = /*[[${impianti}]]*/ [];
+    var palinsesti = /*[[${palinsesti}]]*/ [];
 
     // Esegui questa funzione al caricamento della pagina
     $(document).ready(function(){
@@ -21,9 +23,9 @@
             var descrizione = impianto.descrizione;
             var latitudine = impianto.latitudine;
             var longitudine = impianto.longitudine;
-            var palinsesto = palinsesto
-            // Passa i valori alla tua funzione
-            aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesto);
+
+            // Aggiungi una nuova riga alla tabella per ogni impianto
+            aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesti);
         });
     });
     /*]]>*/

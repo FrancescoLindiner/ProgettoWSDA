@@ -2,18 +2,16 @@ package com.progetto.progettowsda.Model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
+@Table(name = "palinsesto")
 @Entity
 public class Palinsesto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_impianto")
     private String idImpianto;
+    @Column(name = "id_palinsesto")
     private String idPalinsesto;
-
-    @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Palinsesto> palinsesti;
 
     public String getIdImpianto() {
         return idImpianto;
