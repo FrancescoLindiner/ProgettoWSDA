@@ -23,6 +23,25 @@
     const urlParams = new URLSearchParams(window.location.search);
     const idImpianto = urlParams.get('id');
 
+    function segnala_stato(stato) {
+        $.get("/segnala_stato", { id: idImpianto, stato: stato })
+            .done(function(response) {
+                console.log("Stato segnalato: " + stato);
+            })
+            .fail(function() {
+                console.error("Errore nella segnalazione dello stato: " + stato);
+            });
+    }
+
+    window.addEventListener('load', function() {
+        segnala_stato(true);
+    });
+
+    window.addEventListener('beforeunload', function() {
+        segnala_stato(false);
+    });
+
+
     $.get("/wsda", { id: idImpianto })
         .done(function(data) { // data contiene la vista restituita
 

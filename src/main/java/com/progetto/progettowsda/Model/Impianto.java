@@ -9,8 +9,6 @@ import java.util.regex.Pattern;
 @Table(name = "Impianti")
 public class Impianto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "idImpianto")
     private String idImpianto;
     private String descrizione;

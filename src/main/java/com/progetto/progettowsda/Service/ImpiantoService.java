@@ -51,4 +51,23 @@ public class ImpiantoService {
     public Impianto getPalinsestoByIdImpianto(String id) {
         return impiantoRepository.findByIdImpianto(id);
     }
+
+    public void aggiornaStato(String idImpianto, boolean stato) {
+        Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
+        impianto.setStato(stato);
+        impiantoRepository.save(impianto);
+    }
+
+    public void aggiungiImpianto(String idImpianto, String descrizione, float latitudine, float longitudine, String palinsestoPath, boolean stato) {
+        Impianto impianto = new Impianto();
+        impianto.setIdImpianto(idImpianto);
+        impianto.setDescrizione(descrizione);
+        impianto.setLatitudine(latitudine);
+        impianto.setLongitudine(longitudine);
+        impianto.setPalinsesto_path(palinsestoPath);
+        impianto.setStato(stato);
+
+        impiantoRepository.save(impianto);
+
+    }
 }

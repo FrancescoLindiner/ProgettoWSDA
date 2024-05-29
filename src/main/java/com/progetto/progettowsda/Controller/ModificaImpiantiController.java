@@ -30,7 +30,7 @@ public class ModificaImpiantiController {
         model.addAttribute("palinsesti", palinsesti);
         model.addAttribute("impianti", impianti);
 
-        return "impianti"; // Questo dovrebbe restituire il nome del template Thymeleaf (impianti.html)
+        return "impianti";
     }
 
     @PostMapping("/aggiorna")
@@ -44,9 +44,21 @@ public class ModificaImpiantiController {
 
     @PostMapping("/aggiorna_palinsesto")
     public String aggiornaImpiantoPalinsesto(@RequestParam String idImpianto, @RequestParam String idPalinsesto, Model model) {
-        System.out.println(idImpianto);
+
         Boolean isUpdated = impiantoService.aggiornaImpiantoPalinsesto(idImpianto, idPalinsesto);
         model.addAttribute("isUpdated", isUpdated);
         return "messaggio";
+    }
+
+    @PostMapping("/aggiungi_impianto")
+    public String aggiungiImpianto(@RequestParam String idImpianto,
+                                   @RequestParam String descrizione,
+                                   @RequestParam float latitudine,
+                                   @RequestParam float longitudine,
+                                   @RequestParam String palinsesto) {
+        String palinsesto_path = "../../file_xml/palinsesto" + palinsesto + ".xml";
+        impiantoService.aggiungiImpianto(idImpianto, descrizione, latitudine, longitudine, palinsesto_path, false);
+
+        return "messaggio"; // Qui "impianto_aggiunto" è il nome della vista da caricare dopo l'aggiunta dell'impianto
     }
 }

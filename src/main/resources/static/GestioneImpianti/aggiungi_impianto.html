@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiungi Impianto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #3c89b0;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:invalid + span::before {
+            content: "✖ ";
+            color: red;
+        }
+
+        input:valid + span::before {
+            content: "✓ ";
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Aggiungi Impianto</h1>
+    <form action="/aggiungi_impianto" method="POST">
+        <label for="idImpianto">ID:</label>
+        <input type="text" id="idImpianto" name="idImpianto" pattern="[I]\d+" title="Inserisci un ID nel formato Inumber" required>
+        <span></span>
+
+        <label for="descrizione">Descrizione:</label>
+        <input type="text" id="descrizione" name="descrizione" required>
+
+        <label for="latitudine">Latitudine:</label>
+        <input type="number" step="0.01" id="latitudine" name="latitudine" required>
+
+        <label for="longitudine">Longitudine:</label>
+        <input type="number" step="0.01" id="longitudine" name="longitudine" required>
+
+        <label for="palinsesto">Associa un palinsesto:</label>
+        <input type="text" id="palinsesto" name="palinsesto" required>
+
+        <input type="submit" value="Aggiungi Impianto">
+    </form>
+</div>
+
+</body>
+</html>

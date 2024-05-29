@@ -23,19 +23,15 @@ public class LedWallController {
     public String handleQueryRequest(@RequestParam(name="id", required=false) String id, Model model) {
         //System.out.println("ID_ricevuto: " + id);
 
-        // devo prendere l'id del palinsesto associato all'impianto id
         if (id != null && !id.isEmpty()) {
             System.out.println(id);
             Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
 
-            if (impianto != null) {
-                System.out.println("IDPALINSESTO" + impianto.getPalinsesto_path());
-                model.addAttribute("idPalinsesto", impianto.getPalinsesto_path());
-                System.out.println("IDPALINSESTO" + impianto.getPalinsesto_path());
-                model.addAttribute("idImpianto", id);
+            model.addAttribute("idPalinsesto", impianto.getPalinsesto_path());
+            model.addAttribute("idImpianto", id);
 
-                return "view"; // restituisco la vista
-            }
+                return "view";
+
         }
 
         model.addAttribute("errorMessage", "Errore: Nessun palinsesto trovato per l'ID specificato.");
@@ -43,10 +39,9 @@ public class LedWallController {
     }
 
     @GetMapping("/segnala_stato")
-    public String segnalaStato(@RequestParam(name = "idImpianto") String idImpianto,
+    public String segnalaStato(@RequestParam(name = "id") String idImpianto,
                                @RequestParam(name = "stato") boolean stato, Model model) {
-
-
-        return null;
+        impiantoService.aggiornaStato(idImpianto, stato);
+        return "messaggio";
     }
 }

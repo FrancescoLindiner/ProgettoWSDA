@@ -24,7 +24,7 @@
     const idImpianto = urlParams.get('id');
 
     // Funzione per segnalare lo stato dell'impianto
-    function segnalaStato(stato) {
+    function segnala_stato(stato) {
         $.get("/segnala_stato", { id: idImpianto, stato: stato })
             .done(function(response) {
                 console.log("Stato segnalato: " + stato);
@@ -37,13 +37,13 @@
     // Segnala quando l'impianto è attivo
     window.addEventListener('load', function() {
         console.log("ATTIVO")
-        segnalaStato(true);
+        segnala_stato(true);
     });
 
     // Segnala quando l'impianto è disattivato
     window.addEventListener('beforeunload', function() {
         console.log("DISATTIVATO")
-        //segnalaStato('disattivato');
+        segnala_stato(false);
     });
 
     // Caricamento del contenuto dell'impianto
