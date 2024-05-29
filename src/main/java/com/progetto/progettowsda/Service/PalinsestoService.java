@@ -13,9 +13,9 @@ public class PalinsestoService {
     @Autowired
     private PalinsestoRepository palinsestoRepository;
 
-    public Palinsesto getPalinsestoByIdImpianto(String idImpianto) {
+    /*public Palinsesto getPalinsestoByIdImpianto(String idImpianto) {
         return palinsestoRepository.findByIdImpianto(idImpianto);
-    }
+    }*/
 
     public List<Palinsesto> getAllPalinsesti() {
         return palinsestoRepository.findAll();

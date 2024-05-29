@@ -1,60 +1,22 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dati aggiornati con successo!</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .message-popup {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #4CAF50;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      display: none;
-      animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-    @keyframes fadein {
-      from {bottom: 0; opacity: 0;}
-      to {bottom: 20px; opacity: 1;}
-    }
-    @keyframes fadeout {
-      from {bottom: 20px; opacity: 1;}
-      to {bottom: 0; opacity: 0;}
-    }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Titolo della pagina</title>
+ <script src="/GestioneImpianti/js_gestione_impianti.js"></script>
 </head>
 <body>
-<div class="message-popup" id="messagePopup">
-  Dati aggiornati con successo!
-</div>
-
-<script>
-  function showMessage() {
-    var popup = document.getElementById("messagePopup");
-    popup.style.display = "block";
-    setTimeout(function() {
-      popup.style.display = "none";
-    }, 3000);
-  }
-
-  // Mostra il messaggio di popup quando la pagina è caricata
-  window.onload = function() {
-    showMessage();
-  }
+<script th:inline="javascript">
+ /* Estrai il valore booleano dal modello Thymeleaf */
+ var isUpdated = [[${isUpdated}]]; // Supponendo che "isSuccess" sia il nome dell'attributo booleano nel modello
+ /* Mostra il messaggio in base al valore booleano */
+ if (isUpdated) {
+  showToast("Dati aggiornati con successo", isUpdated);
+ } else {
+  showToast("Errore durante l'aggiornamento", isUpdated);
+ }
 </script>
+
 </body>
 </html>

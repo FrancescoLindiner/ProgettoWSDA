@@ -1,4 +1,4 @@
-function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesti) {
+function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesto_path, palinsesti) {
     var tbody = $("#corpo-tabella");
     var newRow = $("<tr>");
 
@@ -8,15 +8,18 @@ function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, p
     // Creare il select per il palinsesto
     var select = $("<select>");
 
-    // Itero sui palinsesti e controllo se l'idImpianto, ricavato dalla tabella "palinsesto", è uguale a idImpianto, ricavato dalla tabella Impianti
+    // Aggiungi l'opzione predefinita
+    var defaultOption = $("<option>").text(palinsesto_path).val(palinsesto_path).prop('selected', true);
+    select.append(defaultOption);
+
+    // Itera sui palinsesti e aggiungi le opzioni
     palinsesti.forEach(function(palinsesto) {
-        var option = $("<option>").text(palinsesto.idPalinsesto).val(palinsesto.idPalinsesto);
-        // Imposta l'opzione predefinita se l'idPalinsesto corrisponde all'idImpianto
-        if (palinsesto.idImpianto === idImpianto) {
-            option.attr('selected', 'selected');
+        if (palinsesto.idPalinsesto !== palinsesto_path) {
+            var option = $("<option>").text(palinsesto.idPalinsesto).val(palinsesto.idPalinsesto);
+            select.append(option);
         }
-        select.append(option);
     });
+
     newRow.append($("<td>").append(select));
 
     // Se lo stato è true, il radio button viene selezionato
@@ -30,7 +33,6 @@ function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, p
 
     tbody.append(newRow);
 }
-
 
 function showToast(message, isSuccess) {
     var toast = document.getElementById("toast");

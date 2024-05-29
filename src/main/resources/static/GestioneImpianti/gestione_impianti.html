@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabella Modificabile</title>
+    <title>Gestione Impianti</title>
     <link rel="stylesheet" href="style_gestione_impianti.css">
 </head>
 <body>
-<h1>Tabella Modificabile</h1>
+<h1>Gestione Impianti</h1>
 <form>
     <table id="tabella">
         <!-- Intestazione della tabella -->
@@ -31,21 +31,20 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Includi il tuo script JavaScript -->
 <script>
     $(document).ready(function() {
         var tbody = $("table tbody");
 
-        function inviaDatiPalinsesto(idImpianto, palinsesto) {
+        function inviaDatiPalinsesto(idImpianto, idPalinsesto) {
             $.post("/aggiorna_palinsesto", {
                 idImpianto: idImpianto,
-                palinsesto: palinsesto
+                idPalinsesto: idPalinsesto
             })
                 .done(function(data) {
-                    console.log("Palinsesto aggiornato con successo:", data);
-                    showToast("Palinsesto aggiornato con successo", true);
+                    $('#toast').html(data);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
+                    console.log(idImpianto, idPalinsesto) // And here
                     console.error("Si è verificato un errore durante l'aggiornamento del palinsesto:", textStatus, errorThrown);
                     showToast("Errore durante l'aggiornamento del palinsesto", false);
                 });
@@ -60,12 +59,11 @@
                 longitudine: longitudine
             })
                 .done(function(data) {
-                    // data
-                    showToast("Dati aggiornati con successo", true);
+                    $('#toast').html(data);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("Si è verificato un errore durante l'aggiornamento dei dati:", textStatus, errorThrown);
-                    showToast("Errore durante l'aggiornamento dei dati", false);
+                    showToast("Errore durante l'aggiornamento", false);
                 });
         }
 
@@ -75,8 +73,8 @@
             var campo = $(this).closest("td").index();
 
             if (campo === 2) {
-                var palinsesto = $(this).val();
-                inviaDatiPalinsesto(idImpianto, palinsesto);
+                var idPalinsesto = $(this).val();
+                inviaDatiPalinsesto(idImpianto, idPalinsesto);
             } else {
                 var descrizione = row.find("td:nth-child(2) input").val();
                 var stato = $(this).is(":checked");

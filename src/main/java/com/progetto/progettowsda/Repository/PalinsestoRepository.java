@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PalinsestoRepository extends JpaRepository<Palinsesto, String> {
-    Palinsesto findByIdImpianto(String idImpianto);
+    //Palinsesto findByIdImpianto(String idImpianto);
 }

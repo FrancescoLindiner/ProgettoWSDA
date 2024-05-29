@@ -23,8 +23,32 @@
     const urlParams = new URLSearchParams(window.location.search);
     const idImpianto = urlParams.get('id');
 
+    // Funzione per segnalare lo stato dell'impianto
+    function segnalaStato(stato) {
+        $.get("/segnala_stato", { id: idImpianto, stato: stato })
+            .done(function(response) {
+                console.log("Stato segnalato: " + stato);
+            })
+            .fail(function() {
+                console.error("Errore nella segnalazione dello stato: " + stato);
+            });
+    }
+
+    // Segnala quando l'impianto è attivo
+    window.addEventListener('load', function() {
+        console.log("ATTIVO")
+        segnalaStato(true);
+    });
+
+    // Segnala quando l'impianto è disattivato
+    window.addEventListener('beforeunload', function() {
+        console.log("DISATTIVATO")
+        //segnalaStato('disattivato');
+    });
+
+    // Caricamento del contenuto dell'impianto
     $.get("/wsda", { id: idImpianto })
-        .done(function(data) { // data contiene la vista restituita
+        .done(function(data) {
             console.log(data)
             $('#content').html(data); // Aggiorna il contenuto della pagina con la vista restituita
         })
