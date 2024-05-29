@@ -16,7 +16,6 @@ public class ImpiantoService {
         // Ottieni tutti gli impianti
         List<Impianto> impianti = impiantoRepository.findAll();
 
-
         return impianti;
     }
 }
