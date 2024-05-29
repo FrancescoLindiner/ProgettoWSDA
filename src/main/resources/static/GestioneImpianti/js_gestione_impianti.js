@@ -2,7 +2,7 @@ function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, p
     var tbody = $("#corpo-tabella");
     var newRow = $("<tr>");
 
-    newRow.append("<td><input type='text' value='" + idImpianto + "'></td>");
+    newRow.append("<td><span>" + idImpianto + "</span></td>"); // Utilizzo di <span> anziché <input>
     newRow.append("<td><input type='text' value='" + descrizione + "'></td>");
 
     // Creare il select per il palinsesto
@@ -21,12 +21,22 @@ function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, p
 
     // Se lo stato è true, il radio button viene selezionato
     if (stato) {
-        newRow.append("<td><input type='radio' value='true' checked></td>");
+        newRow.append("<td><input type='checkbox' value='true' checked></td>");
     } else {
-        newRow.append("<td><input type='radio' value='false'></td>");
+        newRow.append("<td><input type='checkbox' value='false'></td>");
     }
     newRow.append("<td><input type='text' value='" + latitudine + "'></td>");
     newRow.append("<td><input type='text' value='" + longitudine + "'></td>");
 
     tbody.append(newRow);
+}
+
+
+function showToast(message, isSuccess) {
+    var toast = document.getElementById("toast");
+    toast.className = "toast show " + (isSuccess ? "success" : "error");
+    toast.textContent = message;
+    setTimeout(function() {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
 }

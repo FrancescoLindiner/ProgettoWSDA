@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report di Visualizzazione</title>
+</head>
+<body>
+<h1>Report di Visualizzazione</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID Impianto</th>
+        <th>Stato</th>
+        <th>Impressioni</th>
+    </tr>
+    </thead>
+</table>
+<script th:inline="javascript">
+    var impressione = /*[[${impressione}]]*/ [];
+
+    $(document).ready(function () {
+        // Itera su ogni impianto nell'array
+        impressione.forEach(function (impressione) {
+            // Ottieni i valori desiderati
+            var idImpianto = impressione.idImpianto;
+            var idPalinsesto = impressione.idPalinsesto;
+            var idCartellone = impressione.idCartellone;
+
+            // Aggiungi una nuova riga alla tabella per ogni impianto
+            //aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesti);
+        });
+    });
+
+</script>
+</body>
+</html>

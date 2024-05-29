@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Tabella Modificabile</h1>
-<form action="URL_DI_DESTINAZIONE" method="post">
+<form>
     <table id="tabella">
         <!-- Intestazione della tabella -->
         <thead>
@@ -26,25 +26,72 @@
         <!-- Le righe della tabella verranno aggiunte qui tramite JavaScript -->
         </tbody>
     </table>
-    <button type="submit">Invia</button>
+    <div id="toast" class="toast"></div>
 </form>
 
-<!-- Includi jQuery se non è già incluso -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Includi il tuo script JavaScript -->
 <script>
-
     $(document).ready(function() {
         var tbody = $("table tbody");
 
-        // Richiesta al controller per ottenere la vista delle righe della tabella
+        function inviaDatiPalinsesto(idImpianto, palinsesto) {
+            $.post("/aggiorna_palinsesto", {
+                idImpianto: idImpianto,
+                palinsesto: palinsesto
+            })
+                .done(function(data) {
+                    console.log("Palinsesto aggiornato con successo:", data);
+                    showToast("Palinsesto aggiornato con successo", true);
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("Si è verificato un errore durante l'aggiornamento del palinsesto:", textStatus, errorThrown);
+                    showToast("Errore durante l'aggiornamento del palinsesto", false);
+                });
+        }
+
+        function inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine) {
+            $.post("/aggiorna", {
+                idImpianto: idImpianto,
+                descrizione: descrizione,
+                stato: stato,
+                latitudine: latitudine,
+                longitudine: longitudine
+            })
+                .done(function(data) {
+                    console.log(idImpianto, descrizione, stato, latitudine, longitudine);
+                    showToast("Dati aggiornati con successo", true);
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("Si è verificato un errore durante l'aggiornamento dei dati:", textStatus, errorThrown);
+                    showToast("Errore durante l'aggiornamento dei dati", false);
+                });
+        }
+
+        $("table").on("change", "input, select", function() {
+            var row = $(this).closest("tr");
+            var idImpianto = row.find("td:first-child span").text();
+            var campo = $(this).closest("td").index();
+
+            if (campo === 2) {
+                var palinsesto = $(this).val();
+                inviaDatiPalinsesto(idImpianto, palinsesto);
+            } else {
+                var descrizione = row.find("td:nth-child(2) input").val();
+                var stato = $(this).is(":checked");
+                var latitudine = row.find("td:nth-child(5) input").val();
+                var longitudine = row.find("td:nth-child(6) input").val();
+                inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine);
+            }
+        });
+
         $.get("/impianti", function(rowHTML) {
-            console.log(rowHTML)
             tbody.html(rowHTML);
         })
             .fail(function(jqXHR, textStatus, errorThrown) {
                 console.error('Si è verificato un errore durante il recupero delle righe della tabella:', textStatus, errorThrown);
+                showToast('Errore durante il recupero delle righe della tabella', false);
             });
     });
 </script>
