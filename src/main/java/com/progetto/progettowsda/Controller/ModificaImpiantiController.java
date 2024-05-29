@@ -55,10 +55,10 @@ public class ModificaImpiantiController {
                                    @RequestParam String descrizione,
                                    @RequestParam float latitudine,
                                    @RequestParam float longitudine,
-                                   @RequestParam String palinsesto) {
-        String palinsesto_path = "../../file_xml/palinsesto" + palinsesto + ".xml";
-        impiantoService.aggiungiImpianto(idImpianto, descrizione, latitudine, longitudine, palinsesto_path, false);
+                                   @RequestParam String palinsesto, Model model) {
 
-        return "messaggio"; // Qui "impianto_aggiunto" è il nome della vista da caricare dopo l'aggiunta dell'impianto
+        Boolean isAdded = impiantoService.aggiungiImpianto(idImpianto, descrizione, latitudine, longitudine, palinsesto, false);
+        model.addAttribute("isUpdated", isAdded);
+        return "messaggio";
     }
 }

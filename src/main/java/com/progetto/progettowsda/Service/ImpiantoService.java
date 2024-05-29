@@ -58,16 +58,29 @@ public class ImpiantoService {
         impiantoRepository.save(impianto);
     }
 
-    public void aggiungiImpianto(String idImpianto, String descrizione, float latitudine, float longitudine, String palinsestoPath, boolean stato) {
-        Impianto impianto = new Impianto();
-        impianto.setIdImpianto(idImpianto);
-        impianto.setDescrizione(descrizione);
-        impianto.setLatitudine(latitudine);
-        impianto.setLongitudine(longitudine);
-        impianto.setPalinsesto_path(palinsestoPath);
-        impianto.setStato(stato);
+    public boolean aggiungiImpianto(String idImpianto, String descrizione, float latitudine, float longitudine, String palinsestoPath, boolean stato) {
+        try {
+            // Verifica se l'ID dell'impianto è già presente nel repository
+            if (impiantoRepository.existsByIdImpianto(idImpianto)) {
+                return false; // L'ID dell'impianto è duplicato, quindi non possiamo aggiungere l'impianto
+            }
 
-        impiantoRepository.save(impianto);
+            // Creazione del nuovo impianto e impostazione dei valori
+            Impianto nuovoImpianto = new Impianto();
+            nuovoImpianto.setIdImpianto(idImpianto);
+            nuovoImpianto.setDescrizione(descrizione);
+            nuovoImpianto.setLatitudine(latitudine);
+            nuovoImpianto.setLongitudine(longitudine);
+            nuovoImpianto.setPalinsesto_path(palinsestoPath);
+            nuovoImpianto.setStato(stato);
 
+            // Salvataggio del nuovo impianto nel repository
+            impiantoRepository.save(nuovoImpianto);
+            return true; // L'aggiunta dell'impianto è avvenuta con successo
+        } catch (Exception e) {
+            e.printStackTrace(); // Oppure gestisci l'eccezione in base alle tue esigenze
+            return false; // Si è verificato un errore durante l'aggiunta dell'impianto
+        }
     }
+
 }

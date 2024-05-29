@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_gestione_impianti.css">
     <title>Aggiungi Impianto</title>
     <style>
         body {
@@ -32,7 +33,7 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"], input[type="number"], input[type="submit"] {
+        input[type="text"], input[type="number"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -45,24 +46,15 @@
             background-color: #3c89b0;
             color: white;
             cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
-        }
-
-        input:invalid {
-            border-color: red;
-        }
-
-        input:invalid + span::before {
-            content: "✖ ";
-            color: red;
-        }
-
-        input:valid + span::before {
-            content: "✓ ";
-            color: green;
         }
     </style>
 </head>
@@ -70,26 +62,55 @@
 
 <div class="container">
     <h1>Aggiungi Impianto</h1>
-    <form action="/aggiungi_impianto" method="POST">
-        <label for="idImpianto">ID:</label>
-        <input type="text" id="idImpianto" name="idImpianto" pattern="[I]\d+" title="Inserisci un ID nel formato Inumber" required>
-        <span></span>
+    <label for="idImpianto">ID:</label>
+    <input type="text" id="idImpianto" name="idImpianto" pattern="[I]\d+" title="Inserisci un ID nel formato Inumber" required>
 
-        <label for="descrizione">Descrizione:</label>
-        <input type="text" id="descrizione" name="descrizione" required>
+    <label for="descrizione">Descrizione:</label>
+    <input type="text" id="descrizione" name="descrizione" required>
 
-        <label for="latitudine">Latitudine:</label>
-        <input type="number" step="0.01" id="latitudine" name="latitudine" required>
+    <label for="latitudine">Latitudine:</label>
+    <input type="number" step="0.01" id="latitudine" name="latitudine" required>
 
-        <label for="longitudine">Longitudine:</label>
-        <input type="number" step="0.01" id="longitudine" name="longitudine" required>
+    <label for="longitudine">Longitudine:</label>
+    <input type="number" step="0.01" id="longitudine" name="longitudine" required>
 
-        <label for="palinsesto">Associa un palinsesto:</label>
-        <input type="text" id="palinsesto" name="palinsesto" required>
+    <label for="palinsesto">Associa un palinsesto:</label>
+    <input type="text" id="palinsesto" name="palinsesto" required>
 
-        <input type="submit" value="Aggiungi Impianto">
-    </form>
+    <input type="submit" value="Aggiungi Impianto" id="submitButton">
 </div>
+<div id="toast" class="toast"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#submitButton").click(function(event){
+            event.preventDefault();
+
+            var idImpianto = $("#idImpianto").val();
+            var descrizione = $("#descrizione").val();
+            var latitudine = $("#latitudine").val();
+            var longitudine = $("#longitudine").val();
+            var palinsesto = $("#palinsesto").val();
+
+            var data = {
+                idImpianto: idImpianto,
+                descrizione: descrizione,
+                latitudine: latitudine,
+                longitudine: longitudine,
+                palinsesto: palinsesto
+            };
+
+            $.post("/aggiungi_impianto", data)
+                .done(function(response){
+                    $('#toast').html(response);
+                })
+                .fail(function(xhr, status, error){
+                    console.error("Si è verificato un errore durante l'aggiunta dell'impianto: " + error);
+                });
+        });
+    });
+</script>
 
 </body>
 </html>

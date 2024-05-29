@@ -9,6 +9,9 @@
 <body>
 <h1>Gestione Impianti</h1>
 <form>
+    <div class="container">
+
+    <div class="table">
     <table id="tabella">
         <!-- Intestazione della tabella -->
         <thead>
@@ -26,7 +29,9 @@
         <!-- Le righe della tabella verranno aggiunte qui tramite JavaScript -->
         </tbody>
     </table>
+    </div>
     <div id="toast" class="toast"></div>
+        </div>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,7 +49,6 @@
                     $('#toast').html(data);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
-                    console.log(idImpianto, idPalinsesto) // And here
                     console.error("Si è verificato un errore durante l'aggiornamento del palinsesto:", textStatus, errorThrown);
                     showToast("Errore durante l'aggiornamento del palinsesto", false);
                 });

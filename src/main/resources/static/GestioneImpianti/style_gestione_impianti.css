@@ -69,23 +69,24 @@ tr:hover {
 }
 
 .button_aggiungi_impianti {
-    background-color: #4CAF50; /* Colore di sfondo */
+    background-color: #4CAF50;
     border: none;
-    color: white; /* Colore del testo */
-    padding: 15px 32px; /* Spaziatura interna */
+    color: white;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 10px; /* Bordo arrotondato */
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3); /* Ombra */
-    position: absolute; /* Posizionamento assoluto */
-    bottom: 20px; /* Distanza dal basso */
-    left: 20px; /* Distanza da sinistra */
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    position: fixed; /* Position fixed instead of absolute */
+    bottom: 20px;
+    left: 20px;
+    z-index: 999; /* Ensure it's above other content */
 }
 
-.bottone:hover {
-    background-color: #45a049; /* Cambia colore al passaggio del mouse */
+.button_aggiungi_impianti:hover {
+    background-color: #45a049;
 }
