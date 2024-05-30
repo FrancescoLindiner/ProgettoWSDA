@@ -1,3 +1,7 @@
+.container {
+    padding-bottom: 85px; /* Aggiungi spazio inferiore per il bottone */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

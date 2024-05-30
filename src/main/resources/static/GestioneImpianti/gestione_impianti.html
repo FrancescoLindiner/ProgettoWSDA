@@ -52,10 +52,11 @@
                 });
         }
 
-        function inviaDatiGenerale(idImpianto, descrizione, latitudine, longitudine) {
+        function inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine) {
             $.post("/aggiorna", {
                 idImpianto: idImpianto,
                 descrizione: descrizione,
+                stato: stato,
                 latitudine: latitudine,
                 longitudine: longitudine
             })
@@ -68,17 +69,6 @@
                 });
         }
 
-        function aggiornaStato(stato, idImpianto) {
-            $.get("/aggiornaStato", { idImpianto: idImpianto, stato: stato })
-                .done(function(data) {
-                    $('#toast').html(data);
-                })
-                .fail(function() {
-                    console.error("Error loading ID.");
-                });
-        }
-
-
         $("table").on("change", "input, select", function() {
             var row = $(this).closest("tr");
             var idImpianto = row.find("td:first-child span").text();
@@ -87,15 +77,12 @@
             if (campo === 2) {
                 var idPalinsesto = $(this).val();
                 inviaDatiPalinsesto(idImpianto, idPalinsesto);
-            } else if(campo === 3) {
-                var stato = $(this).is(":checked");
-
-                aggiornaStato(stato, idImpianto)
             } else {
+                var stato = $(this).is(":checked");
                 var descrizione = row.find("td:nth-child(2) input").val();
                 var latitudine = row.find("td:nth-child(5) input").val();
                 var longitudine = row.find("td:nth-child(6) input").val();
-                inviaDatiGenerale(idImpianto, descrizione, latitudine, longitudine);
+                inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine);
             }
         });
 
@@ -117,7 +104,6 @@
     });
 </script>
 
-<button class="button_aggiungi_impianti">Aggiungi un impianto</button>
-
+<button class="button_aggiungi_impianti" onclick="window.location.href = 'aggiungi_impianto.html'">Aggiungi un impianto</button>
 </body>
 </html>

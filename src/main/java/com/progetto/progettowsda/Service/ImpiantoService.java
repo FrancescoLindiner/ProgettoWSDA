@@ -24,11 +24,12 @@ public class ImpiantoService {
         return impianti;
     }
 
-    public Boolean aggiornaImpianto(String idImpianto, String descrizione, float latitudine, float longitudine) {
+    public Boolean aggiornaImpianto(String idImpianto, String descrizione, boolean stato, float latitudine, float longitudine) {
         Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
         if (impianto != null) {
             impianto.setDescrizione(descrizione);
             impianto.setLatitudine(latitudine);
+            impianto.setStato(stato);
             impianto.setLongitudine(longitudine);
             impiantoRepository.save(impianto);
             return true;
