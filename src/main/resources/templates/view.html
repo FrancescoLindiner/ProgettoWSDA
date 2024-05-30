@@ -4,12 +4,5 @@
     const idPalinsesto_intero = [[${idPalinsesto}]]; // idPalinsesto_intero ha la forma P0X
     const idPalinsesto = idPalinsesto_intero[idPalinsesto_intero.length - 1];
 
-    var url = window.location.href;
-
-    const match = url.match(/impianto(\d+)/);
-
-    // Estrai l'ID dell'impianto dalla corrispondenza della regex
-    const idImpianto_query = match ? match[1] : null;
-
-    loadNextContent("../../file_xml/palinsesto" + idPalinsesto +".xml", "I"+idImpianto_query, idPalinsesto);
+    loadNextContent("../../file_xml/palinsesto" + idPalinsesto +".xml", idImpianto, idPalinsesto);
 </script>

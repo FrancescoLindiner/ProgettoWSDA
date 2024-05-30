@@ -83,4 +83,7 @@ public class ImpiantoService {
         }
     }
 
+    public Impianto isAttivo(String id) {
+        return impiantoRepository.findByIdImpianto(id);
+    }
 }

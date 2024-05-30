@@ -24,7 +24,7 @@
     const idImpianto = urlParams.get('id');
 
     // Funzione per segnalare lo stato dell'impianto
-    function segnala_stato(stato) {
+    /*function segnala_stato(stato) {
         $.get("/segnala_stato", { id: idImpianto, stato: stato })
             .done(function(response) {
                 console.log("Stato segnalato: " + stato);
@@ -35,7 +35,7 @@
     }
 
     // Segnala quando l'impianto è attivo
-    window.addEventListener('load', function() {
+      window.addEventListener('load', function() {
         console.log("ATTIVO")
         segnala_stato(true);
     });
@@ -44,7 +44,7 @@
     window.addEventListener('beforeunload', function() {
         console.log("DISATTIVATO")
         segnala_stato(false);
-    });
+    });*/
 
     // Caricamento del contenuto dell'impianto
     $.get("/wsda", { id: idImpianto })

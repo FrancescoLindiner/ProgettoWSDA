@@ -21,9 +21,15 @@ public class LedWallController {
 
     @GetMapping("/wsda")
     public String handleQueryRequest(@RequestParam(name="id", required=false) String id, Model model) {
-        //System.out.println("ID_ricevuto: " + id);
+        // devo verificare se l'impianto è attivo
 
-        if (id != null && !id.isEmpty()) {
+        Boolean isImpiantoAttivo = impiantoService.isAttivo(id).isStato();
+
+        if (!isImpiantoAttivo) {
+            return "error";
+        }
+
+        if (!id.isEmpty()) {
             System.out.println(id);
             Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
 
@@ -33,9 +39,7 @@ public class LedWallController {
                 return "view";
 
         }
-
-        model.addAttribute("errorMessage", "Errore: Nessun palinsesto trovato per l'ID specificato.");
-        return "errorView";
+        return "error";
     }
 
     @GetMapping("/segnala_stato")
