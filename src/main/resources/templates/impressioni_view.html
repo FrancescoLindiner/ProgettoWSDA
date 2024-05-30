@@ -1,0 +1,20 @@
+<script src="/Impressioni/js_impression.js"></script>
+<script th:inline="javascript">
+    var impianti = /*[[${impianti}]]*/ [];
+    var palinsesti = /*[[${palinsesti}]]*/ [];
+
+    // Creare un array unico contenente gli ID di impianti e palinsesti
+    var idImpianti = [];
+    var idPalinsesti = [];
+
+    impianti.forEach(function (impianto) {
+        idImpianti.push(impianto.idImpianto);
+    });
+
+    palinsesti.forEach(function (palinsesto) {
+        idPalinsesti.push(palinsesto.idPalinsesto);
+    });
+
+    // Chiamare la funzione addOptionsToSelect con l'array di ID
+    addOptionsToSelect(idImpianti, idPalinsesti);
+</script>

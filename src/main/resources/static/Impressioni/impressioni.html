@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressioni</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Impressioni</h1>
-
+<div class="content">
 <form action="/report" method="get">
 
   <label for="idImpianto">ID Impianto:</label>
-  <input type="text" id="idImpianto" name="idImpianto"><br>
+  <select id="idImpianto" name="idImpianto">
+
+  </select><br>
 
   <label for="idPalinsesto">ID Palinsesto:</label>
-  <input type="text" id="idPalinsesto" name="idPalinsesto"><br>
+  <select id="idPalinsesto" name="idPalinsesto">
+
+  </select><br>
 
   <label for="idCartellone">ID Cartellone:</label>
   <input type="text" id="idCartellone" name="idCartellone"><br>
@@ -27,6 +32,15 @@
 
   <input type="submit" value="Cerca">
 </form>
-
+</div>
 </body>
+<script>
+  $.get("/impression", function(data) {
+    $('#idImpianto').html(data);
+
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    console.error('Si è verificato un errore durante il recupero delle righe della tabella:', textStatus, errorThrown);
+    showToast('Errore durante il recupero delle righe della tabella', false);
+  });
+</script>
 </html>
