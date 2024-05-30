@@ -3,58 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impression</title>
-  <style>
-    /* Aggiungi stili CSS per il contenuto */
-    #content {
-      background-color: lightgray; /* Cambia il colore di sfondo */
-      padding: 10px; /* Aggiungi spazio intorno al contenuto */
-      border-radius: 5px; /* Aggiungi bordi arrotondati */
-    }
-  </style>
+  <title>Impressioni</title>
 </head>
 <body>
-<h1>Impression</h1>
-<form>
+<h1>Impressioni</h1>
+
+<form action="/report" method="get">
+
   <label for="idImpianto">ID Impianto:</label>
-  <select name="idImpianto" id="idImpianto">
-    <!-- Opzioni per idImpianto -->
-    <option value="impianto1">Impianto 1</option>
-    <option value="impianto2">Impianto 2</option>
-    <option value="impianto3">Impianto 3</option>
-  </select><br>
+  <input type="text" id="idImpianto" name="idImpianto"><br>
 
   <label for="idPalinsesto">ID Palinsesto:</label>
-  <select name="idPalinsesto" id="idPalinsesto">
-    <!-- Opzioni per idPalinsesto -->
-    <option value="palinsesto1">Palinsesto 1</option>
-    <option value="palinsesto2">Palinsesto 2</option>
-    <option value="palinsesto3">Palinsesto 3</option>
-  </select><br>
+  <input type="text" id="idPalinsesto" name="idPalinsesto"><br>
 
   <label for="idCartellone">ID Cartellone:</label>
-  <select name="idCartellone" id="idCartellone">
-    <!-- Opzioni per idCartellone -->
-    <option value="cartellone1">Cartellone 1</option>
-    <option value="cartellone2">Cartellone 2</option>
-    <option value="cartellone3">Cartellone 3</option>
-  </select><br>
+  <input type="text" id="idCartellone" name="idCartellone"><br>
 
   <label for="durata">Durata:</label>
   <input type="text" id="durata" name="durata"><br>
 
-  <label for="dateFrom">Data Inizio:</label>
-  <input type="date" id="dateFrom" name="dateFrom"><br>
+  <label for="timestampFrom">Timestamp From:</label>
+  <input type="datetime-local" id="timestampFrom" name="timestampFrom"><br>
 
-  <label for="dateTo">Data Fine:</label>
-  <input type="date" id="dateTo" name="dateTo"><br>
-
-  <input type="submit" value="Invia">
+  <input type="submit" value="Cerca">
 </form>
-
-<div id="content">
-  <!-- Il contenuto della vista ritornata dal model verrà visualizzato qui -->
-</div>
 
 </body>
 </html>

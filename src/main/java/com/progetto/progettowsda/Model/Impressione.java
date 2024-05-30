@@ -1,26 +1,38 @@
 package com.progetto.progettowsda.Model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Table(name = "Segnalazioni")
 @Entity
 public class Impressione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idPalinsesto")
-    private String idPalinsesto;
+    @Column(name = "idSegnalazione")
+    private Integer idSegnalazione;
+
     @Column(name = "idImpianto")
     private String idImpianto;
+
+    @Column(name = "idPalinsesto")
+    private String idPalinsesto;
+
     @Column(name = "idCartellone")
     private String idCartellone;
+
+    @Column(name = "durata")
     private Long durata;
 
-    public String getIdPalinsesto() {
-        return idPalinsesto;
+    @Column(name = "timestamp")
+    private LocalDateTime timestamp;
+
+    // Getters and Setters
+    public Integer getIdSegnalazione() {
+        return idSegnalazione;
     }
 
-    public void setIdPalinsesto(String idPalinsesto) {
-        this.idPalinsesto = idPalinsesto;
+    public void setIdSegnalazione(Integer idSegnalazione) {
+        this.idSegnalazione = idSegnalazione;
     }
 
     public String getIdImpianto() {
@@ -31,6 +43,22 @@ public class Impressione {
         this.idImpianto = idImpianto;
     }
 
+    public String getIdPalinsesto() {
+        return idPalinsesto;
+    }
+
+    public void setIdPalinsesto(String idPalinsesto) {
+        this.idPalinsesto = idPalinsesto;
+    }
+
+    public String getIdCartellone() {
+        return idCartellone;
+    }
+
+    public void setIdCartellone(String idCartellone) {
+        this.idCartellone = idCartellone;
+    }
+
     public Long getDurata() {
         return durata;
     }
@@ -39,7 +67,11 @@ public class Impressione {
         this.durata = durata;
     }
 
-    public String getIdCartellone() {
-        return idCartellone;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }

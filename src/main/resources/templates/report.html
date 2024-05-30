@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -11,27 +10,19 @@
     <thead>
     <tr>
         <th>ID Impianto</th>
-        <th>Stato</th>
-        <th>Impressioni</th>
+        <th>ID Cartellone</th>
+        <th>ID Palinsesto</th>
+        <th>Durata Totale</th>
     </tr>
     </thead>
+    <tbody>
+    <tr th:each="imp : ${impressione}">
+        <td th:text="${imp[0]}"></td>
+        <td th:text="${imp[1]}"></td>
+        <td th:text="${imp[2]}"></td>
+        <td th:text="${imp[3]}"></td>
+    </tr>
+    </tbody>
 </table>
-<script th:inline="javascript">
-    var impressione = /*[[${impressione}]]*/ [];
-
-    $(document).ready(function () {
-        // Itera su ogni impianto nell'array
-        impressione.forEach(function (impressione) {
-            // Ottieni i valori desiderati
-            var idImpianto = impressione.idImpianto;
-            var idPalinsesto = impressione.idPalinsesto;
-            var idCartellone = impressione.idCartellone;
-
-            // Aggiungi una nuova riga alla tabella per ogni impianto
-            //aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesti);
-        });
-    });
-
-</script>
 </body>
 </html>
