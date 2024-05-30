@@ -35,9 +35,9 @@ public class ModificaImpiantiController {
 
     @PostMapping("/aggiorna")
     public String aggiornaImpianto(@RequestParam String idImpianto, @RequestParam String descrizione,
-                                   @RequestParam boolean stato, @RequestParam float latitudine,
+                                   @RequestParam float latitudine,
                                    @RequestParam float longitudine, Model model) {
-        Boolean isUpdated = impiantoService.aggiornaImpianto(idImpianto, descrizione, stato, latitudine, longitudine);
+        Boolean isUpdated = impiantoService.aggiornaImpianto(idImpianto, descrizione, latitudine, longitudine);
         model.addAttribute("isUpdated", isUpdated);
         return "messaggio";
     }
@@ -59,6 +59,19 @@ public class ModificaImpiantiController {
 
         Boolean isAdded = impiantoService.aggiungiImpianto(idImpianto, descrizione, latitudine, longitudine, palinsesto, false);
         model.addAttribute("isUpdated", isAdded);
+        return "messaggio";
+    }
+
+    @GetMapping("/aggiornaStato")
+    public String aggiornaStato(@RequestParam(name = "stato") boolean stato, @RequestParam(name = "idImpianto") String idImpianto, Model model) {
+        Boolean isUpdated = impiantoService.aggiornaStato(idImpianto, stato);
+        model.addAttribute("isUpdated", isUpdated);
+
+        Impianto impianto = impiantoService.getPalinsestoByIdImpianto(idImpianto);
+
+        model.addAttribute("idPalinsesto", impianto.getPalinsesto_path());
+        model.addAttribute("idImpianto", idImpianto);
+
         return "messaggio";
     }
 }

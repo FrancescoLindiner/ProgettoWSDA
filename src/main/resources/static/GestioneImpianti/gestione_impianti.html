@@ -10,30 +10,28 @@
 <h1>Gestione Impianti</h1>
 <form>
     <div class="container">
-
-    <div class="table">
-    <table id="tabella">
-        <!-- Intestazione della tabella -->
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Descrizione</th>
-            <th>Palinsesto Attuale</th>
-            <th>Stato</th>
-            <th>Latitudine</th>
-            <th>Longitudine</th>
-        </tr>
-        </thead>
-        <!-- Corpo della tabella -->
-        <tbody id="corpo-tabella">
-        <!-- Le righe della tabella verranno aggiunte qui tramite JavaScript -->
-        </tbody>
-    </table>
-    </div>
-    <div id="toast" class="toast"></div>
+        <div class="table">
+            <table id="tabella">
+                <!-- Intestazione della tabella -->
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrizione</th>
+                    <th>Palinsesto Attuale</th>
+                    <th>Stato</th>
+                    <th>Latitudine</th>
+                    <th>Longitudine</th>
+                </tr>
+                </thead>
+                <!-- Corpo della tabella -->
+                <tbody id="corpo-tabella">
+                <!-- Le righe della tabella verranno aggiunte qui tramite JavaScript -->
+                </tbody>
+            </table>
         </div>
+        <div id="toast" class="toast"></div>
+    </div>
 </form>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
@@ -54,11 +52,10 @@
                 });
         }
 
-        function inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine) {
+        function inviaDatiGenerale(idImpianto, descrizione, latitudine, longitudine) {
             $.post("/aggiorna", {
                 idImpianto: idImpianto,
                 descrizione: descrizione,
-                stato: stato,
                 latitudine: latitudine,
                 longitudine: longitudine
             })
@@ -71,6 +68,17 @@
                 });
         }
 
+        function aggiornaStato(stato, idImpianto) {
+            $.get("/aggiornaStato", { idImpianto: idImpianto, stato: stato })
+                .done(function(data) {
+                    $('#toast').html(data);
+                })
+                .fail(function() {
+                    console.error("Error loading ID.");
+                });
+        }
+
+
         $("table").on("change", "input, select", function() {
             var row = $(this).closest("tr");
             var idImpianto = row.find("td:first-child span").text();
@@ -79,12 +87,15 @@
             if (campo === 2) {
                 var idPalinsesto = $(this).val();
                 inviaDatiPalinsesto(idImpianto, idPalinsesto);
+            } else if(campo === 3) {
+                var stato = $(this).is(":checked");
+
+                aggiornaStato(stato, idImpianto)
             } else {
                 var descrizione = row.find("td:nth-child(2) input").val();
-                var stato = $(this).is(":checked");
                 var latitudine = row.find("td:nth-child(5) input").val();
                 var longitudine = row.find("td:nth-child(6) input").val();
-                inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine);
+                inviaDatiGenerale(idImpianto, descrizione, latitudine, longitudine);
             }
         });
 
@@ -95,10 +106,18 @@
                 console.error('Si è verificato un errore durante il recupero delle righe della tabella:', textStatus, errorThrown);
                 showToast('Errore durante il recupero delle righe della tabella', false);
             });
+
+
+        function showToast(message, success) {
+            var toast = $('#toast');
+            toast.html(message);
+            toast.css('background-color', success ? 'green' : 'red');
+            toast.show().delay(3000).fadeOut();
+        }
     });
 </script>
 
-<button class="button_aggiungi_impianti" onclick="window.location.href = 'aggiungi_impianto.html'">Aggiungi un impianto</button>
+<button class="button_aggiungi_impianti">Aggiungi un impianto</button>
 
 </body>
 </html>

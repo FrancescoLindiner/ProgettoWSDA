@@ -46,6 +46,7 @@
         segnala_stato(false);
     });*/
 
+
     // Caricamento del contenuto dell'impianto
     $.get("/wsda", { id: idImpianto })
         .done(function(data) {
@@ -55,6 +56,13 @@
         .fail(function() {
             console.error("Error loading ID.");
         });
+
+    function ricaricaPagina() {
+        location.reload();
+    }
+
+    // Ricarica la pagina ogni 2 minuti
+    setInterval(ricaricaPagina, 120000);
 </script>
 </body>
 </html>

@@ -24,11 +24,10 @@ public class ImpiantoService {
         return impianti;
     }
 
-    public Boolean aggiornaImpianto(String idImpianto, String descrizione, boolean stato, float latitudine, float longitudine) {
+    public Boolean aggiornaImpianto(String idImpianto, String descrizione, float latitudine, float longitudine) {
         Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
         if (impianto != null) {
             impianto.setDescrizione(descrizione);
-            impianto.setStato(stato);
             impianto.setLatitudine(latitudine);
             impianto.setLongitudine(longitudine);
             impiantoRepository.save(impianto);
@@ -52,10 +51,15 @@ public class ImpiantoService {
         return impiantoRepository.findByIdImpianto(id);
     }
 
-    public void aggiornaStato(String idImpianto, boolean stato) {
-        Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
-        impianto.setStato(stato);
-        impiantoRepository.save(impianto);
+    public Boolean aggiornaStato(String idImpianto, boolean stato) {
+        try {
+            Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
+            impianto.setStato(stato);
+            impiantoRepository.save(impianto);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean aggiungiImpianto(String idImpianto, String descrizione, float latitudine, float longitudine, String palinsestoPath, boolean stato) {
