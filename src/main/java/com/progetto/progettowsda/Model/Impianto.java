@@ -70,7 +70,10 @@ public class Impianto {
 
 
     public String getPalinsesto_path() {
-        // Per estrarre l'id del palinsesto
+        return palinsesto_path;
+    }
+
+    public String getIdPalinsesto() {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(palinsesto_path);
 

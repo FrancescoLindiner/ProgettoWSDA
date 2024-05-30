@@ -25,8 +25,10 @@
             var longitudine = impianto.longitudine;
             var palinsesto_path = impianto.palinsesto_path;
 
+            const idPalinsesto = impianto.palinsesto_path.match(/\d+/)[0];
+
             // Aggiungi una nuova riga alla tabella per ogni impianto
-            aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesto_path, palinsesti);
+            aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, "P"+idPalinsesto, palinsesti);
         });
     });
     /*]]>*/

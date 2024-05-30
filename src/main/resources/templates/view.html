@@ -4,5 +4,9 @@
     const idPalinsesto_intero = [[${idPalinsesto}]]; // idPalinsesto_intero ha la forma P0X
     const idPalinsesto = idPalinsesto_intero[idPalinsesto_intero.length - 1];
 
-    loadNextContent("../../file_xml/palinsesto" + idPalinsesto +".xml", idImpianto, idPalinsesto);
+    const path_palinsesto = [[${pathPalinsesto}]]
+
+    console.log("Path" + path_palinsesto)
+
+    loadNextContent(path_palinsesto, idImpianto, idPalinsesto);
 </script>

@@ -70,7 +70,7 @@ public class ModificaImpiantiController {
 
         Impianto impianto = impiantoService.getPalinsestoByIdImpianto(idImpianto);
 
-        model.addAttribute("idPalinsesto", impianto.getPalinsesto_path());
+        model.addAttribute("idPalinsesto", impianto.getIdPalinsesto());
         model.addAttribute("idImpianto", idImpianto);
 
         return "messaggio";

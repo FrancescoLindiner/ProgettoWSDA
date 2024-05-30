@@ -28,7 +28,8 @@ public class LedWallController {
         if (!id.isEmpty()) {
             Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
 
-            model.addAttribute("idPalinsesto", impianto.getPalinsesto_path());
+            model.addAttribute("idPalinsesto", impianto.getIdPalinsesto());
+            model.addAttribute("pathPalinsesto", impianto.getPalinsesto_path());
             model.addAttribute("idImpianto", id);
 
             return "view";
