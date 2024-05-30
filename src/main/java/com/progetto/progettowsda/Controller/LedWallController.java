@@ -17,24 +17,21 @@ public class LedWallController {
 
     @GetMapping("/wsda")
     public String handleQueryRequest(@RequestParam(name="id", required=false) String id, Model model) {
-        // devo verificare se l'impianto è attivo
-
-        Boolean isImpiantoAttivo = impiantoService.isAttivo(id).isStato();
-
-        if (!isImpiantoAttivo) {
+        try {
+            // Verifico se l'impianto è attivo
+            Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
+            if (impianto != null && impianto.isStato()) {
+                model.addAttribute("idPalinsesto", impianto.getIdPalinsesto());
+                model.addAttribute("pathPalinsesto", impianto.getPalinsesto_path());
+                model.addAttribute("idImpianto", id);
+                return "view";
+            } else {
+                return "error";
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace(); // Stampa la traccia dell'eccezione per il debug
             return "error";
         }
-
-        if (!id.isEmpty()) {
-            Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
-
-            model.addAttribute("idPalinsesto", impianto.getIdPalinsesto());
-            model.addAttribute("pathPalinsesto", impianto.getPalinsesto_path());
-            model.addAttribute("idImpianto", id);
-
-            return "view";
-        }
-        return "error";
     }
 
     @GetMapping("/segnala_stato")
