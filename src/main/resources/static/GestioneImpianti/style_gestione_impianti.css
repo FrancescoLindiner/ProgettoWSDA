@@ -1,7 +1,3 @@
-.container {
-    padding-bottom: 85px; /* Aggiungi spazio inferiore per il bottone */
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -93,4 +89,4 @@ tr:hover {
 
 .button_aggiungi_impianti:hover {
     background-color: #45a049;
-}
+} 

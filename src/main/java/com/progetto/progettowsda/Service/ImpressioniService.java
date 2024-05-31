@@ -12,7 +12,7 @@ public class ImpressioniService {
     @Autowired
     private ImpressioniRepository impressioniRepository;
 
-    public List<Object[]> searchImpressions(String idImpianto, String idPalinsesto, String idCartellone, Long durata, LocalDateTime timestampFrom) {
-        return impressioniRepository.searchImpressions(idImpianto, idPalinsesto, idCartellone, durata, timestampFrom);
+    public List<Object[]> searchImpressions(String idImpianto, String idPalinsesto, String idCartellone, LocalDateTime timestampFrom) {
+        return impressioniRepository.searchImpressions(idImpianto, idPalinsesto, idCartellone, timestampFrom);
     }
 }

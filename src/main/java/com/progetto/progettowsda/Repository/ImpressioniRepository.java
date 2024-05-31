@@ -14,14 +14,12 @@ public interface ImpressioniRepository extends JpaRepository<Impressione, Intege
             "WHERE (s.idImpianto = :idImpianto) " +
             "AND  (s.idPalinsesto = :idPalinsesto) " +
             "AND  (s.idCartellone = :idCartellone) " +
-            "AND (s.durata = :durata) " +
             "AND (s.timestamp >= :timestampFrom) " +
             "GROUP BY s.idImpianto, s.idCartellone, s.idPalinsesto")
     List<Object[]> searchImpressions(
             @Param("idImpianto") String idImpianto,
             @Param("idPalinsesto") String idPalinsesto,
             @Param("idCartellone") String idCartellone,
-            @Param("durata") Long durata,
             @Param("timestampFrom") LocalDateTime timestampFrom
     );
 }

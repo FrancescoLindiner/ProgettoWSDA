@@ -4,43 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressioni</title>
+  <link rel="stylesheet" href="css_impressioni.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Impressioni</h1>
 <div class="content">
-<form action="/report" method="get">
-
-  <label for="idImpianto">ID Impianto:</label>
-  <select id="idImpianto" name="idImpianto">
-
-  </select><br>
-
-  <label for="idPalinsesto">ID Palinsesto:</label>
-  <select id="idPalinsesto" name="idPalinsesto">
-
-  </select><br>
-
-  <label for="idCartellone">ID Cartellone:</label>
-  <input type="text" id="idCartellone" name="idCartellone"><br>
-
-  <label for="durata">Durata:</label>
-  <input type="text" id="durata" name="durata"><br>
-
-  <label for="timestampFrom">Timestamp From:</label>
-  <input type="datetime-local" id="timestampFrom" name="timestampFrom"><br>
-
-  <input type="submit" value="Cerca">
-</form>
+  <div class="form-container">
+  <div class="form-row">
+    <label for="idImpianto">ID Impianto:</label>
+    <select id="idImpianto" name="idImpianto"></select>
+  </div>
+  <div class="form-row">
+    <label for="idPalinsesto">ID Palinsesto:</label>
+    <select id="idPalinsesto" name="idPalinsesto"></select>
+  </div>
+  <div class="form-row">
+    <label for="idCartellone">ID Cartellone:</label>
+    <input type="text" id="idCartellone" name="idCartellone">
+  </div>
+  <div class="form-row">
+    <label for="timestampFrom">Timestamp Da:</label>
+    <input type="datetime-local" id="timestampFrom" name="timestampFrom">
+  </div>
+  <div class="form-row">
+    <label for="timestampTo">Timestamp A:</label>
+    <input type="datetime-local" id="timestampTo" name="timestampTo">
+  </div>
+  <div class="form-row">
+    <input type="submit" value="Cerca" id="submitButton">
+  </div>
 </div>
-</body>
+</div>
+<div id="report"></div>
 <script>
   $.get("/impression", function(data) {
     $('#idImpianto').html(data);
-
   }).fail(function(jqXHR, textStatus, errorThrown) {
     console.error('Si è verificato un errore durante il recupero delle righe della tabella:', textStatus, errorThrown);
     showToast('Errore durante il recupero delle righe della tabella', false);
   });
+
+  $(document).ready(function(){
+    $("#submitButton").click(function(event){
+      event.preventDefault();
+
+      var idImpianto = $("#idImpianto").val();
+      var idPalinsesto = $("#idPalinsesto").val();
+      var idCartellone = $("#idCartellone").val();
+      var timestampFrom = $("#timestampFrom").val();
+      //var timestampTo = $("#timestampTo").val();
+
+
+      var data = {
+        idImpianto: idImpianto,
+        idPalinsesto: idPalinsesto,
+        idCartellone: idCartellone,
+        timestampFrom: timestampFrom,
+        //timestampTo: timestampTo
+      };
+
+      $.get("/report", data)
+              .done(function(response){
+                console.log(response)
+                $('#report').html(response);
+              })
+              .fail(function(xhr, status, error){
+                console.error("Si è verificato un errore durante l'aggiunta dell'impianto: " + error);
+              });
+    });
+  });
+
 </script>
+</body>
 </html>

@@ -31,11 +31,10 @@ public class ImpressioniController {
             @RequestParam(required = false) String idImpianto,
             @RequestParam(required = false) String idPalinsesto,
             @RequestParam(required = false) String idCartellone,
-            @RequestParam(required = false) Long durata,
             @RequestParam(required = false) LocalDateTime timestampFrom,
             Model model) {
         // Chiamata al servizio per ottenere i dati filtrati
-        List<Object[]> impressione = impressioniService.searchImpressions(idImpianto, idPalinsesto, idCartellone, durata, timestampFrom);
+        List<Object[]> impressione = impressioniService.searchImpressions(idImpianto, idPalinsesto, idCartellone, timestampFrom);
         System.out.println(impressione);
         model.addAttribute("impressione", impressione);
         return "report";
