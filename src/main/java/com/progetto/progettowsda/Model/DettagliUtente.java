@@ -1,13 +1,9 @@
 package com.progetto.progettowsda.Model;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 public class DettagliUtente implements UserDetails {
 
@@ -19,14 +15,7 @@ public class DettagliUtente implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Ruolo> roles = user.getRoles();
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        for (Ruolo role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-
-        return authorities;
+        return null; // Nessun ruolo richiesto
     }
 
     @Override

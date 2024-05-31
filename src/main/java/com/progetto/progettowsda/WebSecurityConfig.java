@@ -33,7 +33,7 @@ public class WebSecurityConfig {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/GestioneImpianti/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/GestioneImpianti/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
