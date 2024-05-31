@@ -71,4 +71,24 @@ public class ImpressioniController {
 
         return "impressioni_view";
     }
+
+    @GetMapping("/query-personalizzate")
+    public String query_personalizzate(@RequestParam String query, Model model) {
+        if (query.equals("query1")) {
+            List<ImpressioneDTO> impressione = impressioniService.getImpiantoAttivo();
+            model.addAttribute("impressione", impressione);
+            model.addAttribute("query", query);
+            return "query_personalizzata";
+        } else if (query.equals("query2")) {
+            List<ImpressioneDTO> impressione = impressioniService.getPalinsestoAttivo();
+            model.addAttribute("impressione", impressione);
+            model.addAttribute("query", query);
+            return "query_personalizzata";
+        } else {
+            List<ImpressioneDTO> impressione = impressioniService.getCartelloneAttivo();
+            model.addAttribute("impressione", impressione);
+            model.addAttribute("query", query);
+            return "query_personalizzata";
+        }
+    }
 }

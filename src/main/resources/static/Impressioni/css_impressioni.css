@@ -9,10 +9,30 @@ body {
     align-items: center; /* Centra orizzontalmente */
 }
 
-h1 {
-    text-align: center;
+h1, h2 {
+    text-align: left;
     color: #3c89b0;
     margin-top: 20px;
+}
+
+.button-container #button_impianto_più_attivo,
+.button-container #button_palinsesto_più_attivo,
+.button-container #button_cartellone_più_attivo {
+    background-color: #3c89b0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.5s, color 0.5s; /* Aggiungi una transizione per una transizione fluida */
+}
+
+.button-container #button_impianto_più_attivo:hover,
+.button-container #button_palinsesto_più_attivo:hover,
+.button-container #button_cartellone_più_attivo:hover {
+    background-color: #45a049;
+    color: #fff;
 }
 
 .content {
@@ -22,6 +42,10 @@ h1 {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#idCartellone {
+    max-width: 50px;
 }
 
 .form-container {
@@ -55,10 +79,12 @@ input[type="submit"] {
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 15px 80px; /* Aumenta la larghezza del pulsante */
+    border-radius: 8px;
     font-size: 16px;
+    transition: background-color 0.5s, color 0.5s; /* Aggiungi una transizione per una transizione fluida */
 }
+
 
 input[type="submit"]:hover {
     background-color: #45a049;

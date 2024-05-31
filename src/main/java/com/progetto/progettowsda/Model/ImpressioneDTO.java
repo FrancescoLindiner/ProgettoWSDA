@@ -5,10 +5,16 @@ public class ImpressioneDTO {
     private String idPalinsesto;
     private String idCartellone;
     private Long durataTotale;
+    private String query;
 
     public ImpressioneDTO(String idImpianto, String idPalinsesto, Long durataTotale) {
         this.idImpianto = idImpianto;
         this.idPalinsesto = idPalinsesto;
+        this.durataTotale = durataTotale;
+    }
+
+    public ImpressioneDTO(String idImpianto, Long durataTotale) {
+        this.idImpianto = idImpianto;
         this.durataTotale = durataTotale;
     }
 
@@ -50,5 +56,13 @@ public class ImpressioneDTO {
 
     public void setIdCartellone(String idCartellone) {
         this.idCartellone = idCartellone;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

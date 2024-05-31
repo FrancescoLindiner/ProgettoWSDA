@@ -68,4 +68,24 @@ public interface ImpressioniRepository extends JpaRepository<Impressione, Intege
             "AND s.timestamp >= :timestampFrom " +
             "GROUP BY s.idImpianto, s.idPalinsesto")
     List<ImpressioneDTO> searchIdImpiantoIdPalinsestoDateFrom(String idImpianto, String idPalinsesto, LocalDateTime timestampFrom);
+
+    @Query("SELECT new com.progetto.progettowsda.Model.ImpressioneDTO(s.idImpianto, SUM(s.durata)) " +
+            "FROM Impressione s " +
+            "GROUP BY s.idImpianto " +
+            "ORDER BY SUM(s.durata) DESC " +
+            "LIMIT 1")
+    List<ImpressioneDTO> getImpiantoAttivo();
+    @Query("SELECT new com.progetto.progettowsda.Model.ImpressioneDTO(s.idPalinsesto, SUM(s.durata)) " +
+            "FROM Impressione s " +
+            "GROUP BY s.idPalinsesto " +
+            "ORDER BY SUM(s.durata) DESC " +
+            "LIMIT 1")
+    List<ImpressioneDTO> getPalinsestoAttivo();
+
+    @Query("SELECT new com.progetto.progettowsda.Model.ImpressioneDTO(s.idImpianto, s.idCartellone, SUM(s.durata)) " +
+            "FROM Impressione s " +
+            "GROUP BY s.idImpianto, s.idCartellone " +
+            "ORDER BY SUM(s.durata) DESC " +
+            "LIMIT 1")
+    List<ImpressioneDTO> getCartelloneAttivo();
 }

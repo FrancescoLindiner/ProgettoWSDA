@@ -44,4 +44,16 @@ public class ImpressioniService {
     public List<ImpressioneDTO> searchIdImpiantoIdPalinsestoDateFrom(String idImpianto, String idPalinsesto, LocalDateTime timestampFrom) {
         return impressioniRepository.searchIdImpiantoIdPalinsestoDateFrom(idImpianto, idPalinsesto, timestampFrom);
     }
+
+    public List<ImpressioneDTO> getImpiantoAttivo() {
+        return impressioniRepository.getImpiantoAttivo();
+    }
+
+    public List<ImpressioneDTO> getPalinsestoAttivo() {
+        return impressioniRepository.getPalinsestoAttivo();
+    }
+
+    public List<ImpressioneDTO> getCartelloneAttivo() {
+        return impressioniRepository.getCartelloneAttivo();
+    }
 }

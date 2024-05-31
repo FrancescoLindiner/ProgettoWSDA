@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query personalizzata</title>
+</head>
+<body>
+<div th:each="impressione : ${impressione}">
+    <div th:if="${query == 'query1'}">
+        <p>
+            L’impianto più attivo è <span th:text="${impressione.idImpianto}"></span>
+            con un totale di <span th:text="${impressione.durataTotale}"></span> secondi di attività.
+        </p>
+    </div>
+    <div th:if="${query == 'query2'}">
+        <p>
+            Il palinsesto più visualizzato è <span th:text="${impressione.idImpianto}"></span> <!--c'è idImpianto per via del costruttore di impressione-->
+            per un totale di <span th:text="${impressione.durataTotale}"></span> secondi di total time.
+        </p>
+    </div>
+    <div th:if="${query == 'query3'}">
+        <p>
+            Il cartellone più visualizzato è stato <span th:text="${impressione.idPalinsesto}"></span> <!--stessa cosa di prima-->
+            con un totale di <span th:text="${impressione.durataTotale}"></span>
+            secondi di tempo di visualizzazione nell’impianto <span th:text="${impressione.idImpianto}"></span>.</p>
+    </div>
+</div>
+</body>
+<script>
+    function convertiSecondi(secondi) {
+        var ore = Math.floor(secondi / 3600);
+        var minuti = Math.floor((secondi % 3600) / 60);
+        var restantiSecondi = secondi % 60;
+
+        return ore + " ore, " + minuti + " minuti, " + restantiSecondi + " secondi";
+    }
+</script>
+</html>
