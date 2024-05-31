@@ -1,6 +1,7 @@
 package com.progetto.progettowsda.Controller;
 
 import com.progetto.progettowsda.Model.Impianto;
+import com.progetto.progettowsda.Model.ImpressioneDTO;
 import com.progetto.progettowsda.Model.Palinsesto;
 import com.progetto.progettowsda.Service.ImpiantoService;
 import com.progetto.progettowsda.Service.ImpressioniService;
@@ -32,11 +33,31 @@ public class ImpressioniController {
             @RequestParam(required = false) String idPalinsesto,
             @RequestParam(required = false) String idCartellone,
             @RequestParam(required = false) LocalDateTime timestampFrom,
+            @RequestParam(required = false) LocalDateTime timestampTo,
             Model model) {
-        // Chiamata al servizio per ottenere i dati filtrati
-        List<Object[]> impressione = impressioniService.searchImpressions(idImpianto, idPalinsesto, idCartellone, timestampFrom);
-        System.out.println(impressione);
+        List<ImpressioneDTO> impressione;
+        // idImpianto e idPalinsesto ci sono sempre
+
+        if (idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsesto(idImpianto, idPalinsesto);
+        } else if(!idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartellone(idImpianto, idPalinsesto, idCartellone);
+        } else if(idCartellone.isEmpty() && timestampTo!=null && timestampFrom==null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoDateTo(idImpianto, idPalinsesto, timestampTo);
+        } else if(!idCartellone.isEmpty() && timestampTo!=null && timestampFrom==null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartelloneDateTo(idImpianto, idPalinsesto, idCartellone, timestampTo);
+        } else if(idCartellone.isEmpty() && timestampTo==null && timestampFrom!=null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoDateFrom(idImpianto, idPalinsesto, timestampFrom);
+        } else if(!idCartellone.isEmpty() && timestampTo==null && timestampFrom!=null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartelloneDateFrom(idImpianto, idPalinsesto, idCartellone, timestampFrom);
+        } else if(idCartellone.isEmpty() && timestampTo!=null && timestampFrom!=null) {
+            impressione = impressioniService.searchIdImpiantoIdPalinsestoDate(idImpianto, idPalinsesto, timestampTo, timestampFrom);
+        } else {
+            impressione = impressioniService.searchAll(idImpianto, idPalinsesto, idCartellone, timestampFrom, timestampTo);
+        }
+
         model.addAttribute("impressione", impressione);
+        System.out.println(impressione);
         return "report";
     }
 

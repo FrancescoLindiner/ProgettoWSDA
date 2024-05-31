@@ -10,6 +10,9 @@ function addOptionsToSelect(impianti, palinsesti) {
         selectIdImpianto.append(option);
     });
 
+    var defaultOption = $("<option>").text("-").prop('selected', true);
+    selectIdPalinsesto.append(defaultOption);
+
     palinsesti.forEach(function(palinsesto) {
         var option = $("<option>").text(palinsesto)
         selectIdPalinsesto.append(option);

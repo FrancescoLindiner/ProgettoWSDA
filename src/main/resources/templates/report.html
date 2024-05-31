@@ -3,26 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Report di Visualizzazione</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Report di Visualizzazione</h1>
-<table>
-    <thead>
-    <tr>
-        <th>ID Impianto</th>
-        <th>ID Cartellone</th>
-        <th>ID Palinsesto</th>
-        <th>Durata Totale</th>
-    </tr>
+<table id="table">
+    <thead id="intestazione">
+
     </thead>
-    <tbody>
-    <tr th:each="imp : ${impressione}">
-        <td th:text="${imp[0]}"></td>
-        <td th:text="${imp[1]}"></td>
-        <td th:text="${imp[2]}"></td>
-        <td th:text="${imp[3]}"></td>
-    </tr>
+    <tbody id="corpo-tabella">
+
     </tbody>
 </table>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // Recupera i dati degli impianti dal modello
+    var impressione = /*[[${impressione}]]*/ [];
+    console.log(impressione)
+
+    $(document).ready(function(){
+        // Inizializza un set per le intestazioni
+        var intestazioniGenerate = false;
+
+        // Itera su ogni impianto nell'array
+        impressione.forEach(function(impression) {
+            // Ottieni i valori desiderati
+            var idImpianto = impression.idImpianto;
+            var idPalinsesto = impression.idPalinsesto;
+            var idCartellone = impression.idCartellone;
+            var timeStampFrom = impression.timestampFrom;
+            var timestampTo = impression.timestampTo;
+            var durataTotale = impression.durataTotale;
+            console.log("CIAO ", idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale)
+
+            if (!intestazioniGenerate) {
+                // Genera le intestazioni solo la prima volta
+                generaIntestazioni({
+                    "ID Impianto": idImpianto,
+                    "ID Palinsesto": idPalinsesto,
+                    "ID Cartellone": idCartellone,
+                    "Timestamp From": timeStampFrom,
+                    "Timestamp To": timestampTo,
+                    "Durata": durataTotale
+                });
+                intestazioniGenerate = true;
+            }
+
+            aggiungiRiga(idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale);
+        });
+    });
+
+    function aggiungiRiga(idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale) {
+        var row = $('<tr></tr>');
+        var valori = {
+            "ID Impianto": idImpianto,
+            "ID Palinsesto": idPalinsesto,
+            "ID Cartellone": idCartellone,
+            "Timestamp From": timeStampFrom,
+            "Timestamp To": timestampTo,
+            "Durata totale": durataTotale
+        };
+
+        for (var chiave in valori) {
+            if (valori[chiave] !== null && valori[chiave] !== undefined) {
+                row.append('<td>' + valori[chiave] + '</td>');
+            }
+        }
+        $('#corpo-tabella').append(row);
+    }
+
+    function generaIntestazioni(valori) {
+        var headerRow = $('<tr></tr>');
+        for (var chiave in valori) {
+            if (valori[chiave] !== null && valori[chiave] !== undefined) {
+                headerRow.append('<th>' + chiave + '</th>');
+            }
+        }
+        $('#intestazione').append(headerRow);
+    }
+    /*]]>*/
+</script>
 </body>
 </html>

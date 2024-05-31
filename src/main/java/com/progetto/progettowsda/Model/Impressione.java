@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 @Table(name = "Segnalazioni")
 @Entity
 public class Impressione {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSegnalazione")
@@ -73,5 +74,17 @@ public class Impressione {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        return "Impressione{" +
+                "idSegnalazione=" + idSegnalazione +
+                ", idImpianto='" + idImpianto + '\'' +
+                ", idPalinsesto='" + idPalinsesto + '\'' +
+                ", idCartellone='" + idCartellone + '\'' +
+                ", durata=" + durata +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

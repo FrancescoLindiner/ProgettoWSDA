@@ -33,10 +33,12 @@ public class WebSecurityConfig {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/GestioneImpianti/**").hasAuthority("ADMIN")
+                        .requestMatchers("/GestioneImpianti/**").hasAnyAuthority("ADMIN")
                         .anyRequest().permitAll()
                 )
-                .formLogin(login -> login.permitAll())
+                .formLogin(login -> login
+                        .defaultSuccessUrl("/GestioneImpianti/gestione_impianti.html", true)
+                        .permitAll())
                 .logout(logout -> logout.permitAll())
                 .exceptionHandling(eh -> eh.accessDeniedPage("/403"))
         ;
