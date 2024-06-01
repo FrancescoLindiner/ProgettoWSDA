@@ -32,7 +32,7 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
+        return http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth
                         .requestMatchers("/GestioneImpianti/**").authenticated()
                         .anyRequest().permitAll()
                 )
@@ -40,9 +40,7 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/GestioneImpianti/gestione_impianti.html", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())
-                .exceptionHandling(eh -> eh.accessDeniedPage("/403"))
+                .exceptionHandling(eh -> eh.accessDeniedPage("/403")).build()
         ;
-
-        return http.build();
     }
 }

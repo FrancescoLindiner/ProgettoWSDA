@@ -34,10 +34,13 @@ public class ModificaImpiantiController {
     }
 
     @PostMapping("/aggiorna")
-    public String aggiornaImpianto(@RequestParam String idImpianto, @RequestParam String descrizione,
+    public String aggiornaImpianto(@RequestParam String idImpianto,
+                                   @RequestParam String descrizione,
                                    @RequestParam boolean stato,
                                    @RequestParam float latitudine,
-                                   @RequestParam float longitudine, Model model) {
+                                   @RequestParam float longitudine,
+                                   Model model) {
+        System.out.println(idImpianto + ", " + descrizione + ", " + stato + ", " + latitudine + ", " + longitudine);
         Boolean isUpdated = impiantoService.aggiornaImpianto(idImpianto, descrizione, stato, latitudine, longitudine);
         model.addAttribute("isUpdated", isUpdated);
         return "messaggio";

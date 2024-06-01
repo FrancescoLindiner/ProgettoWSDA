@@ -53,6 +53,7 @@
         }
 
         function inviaDatiGenerale(idImpianto, descrizione, stato, latitudine, longitudine) {
+            console.log(idImpianto, descrizione, stato, latitudine, longitudine)
             $.post("/aggiorna", {
                 idImpianto: idImpianto,
                 descrizione: descrizione,
@@ -61,11 +62,11 @@
                 longitudine: longitudine
             })
                 .done(function(data) {
+                    console.log(data)
                     $('#toast').html(data);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("Si è verificato un errore durante l'aggiornamento dei dati:", textStatus, errorThrown);
-                    showToast("Errore durante l'aggiornamento", false);
                 });
         }
 
