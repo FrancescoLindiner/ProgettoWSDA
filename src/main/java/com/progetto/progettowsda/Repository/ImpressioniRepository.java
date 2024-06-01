@@ -88,4 +88,9 @@ public interface ImpressioniRepository extends JpaRepository<Impressione, Intege
             "ORDER BY SUM(s.durata) DESC " +
             "LIMIT 1")
     List<ImpressioneDTO> getCartelloneAttivo();
+    @Query("SELECT new com.progetto.progettowsda.Model.ImpressioneDTO(s.idImpianto, s.idPalinsesto, s.idCartellone, SUM(s.durata)) " +
+            "FROM Impressione s " +
+            "WHERE s.idImpianto = :idImpianto " +
+            "GROUP BY s.idImpianto, s.idPalinsesto,s.idCartellone")
+    List<ImpressioneDTO> searchImpianto(String idImpianto);
 }

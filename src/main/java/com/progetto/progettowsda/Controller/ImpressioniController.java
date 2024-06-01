@@ -37,8 +37,10 @@ public class ImpressioniController {
             Model model) {
         List<ImpressioneDTO> impressione;
         // idImpianto e idPalinsesto ci sono sempre
-
-        if (idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
+        System.out.println(idPalinsesto);
+        if (idPalinsesto.equals("-")) {
+                impressione = impressioniService.searchImpianto(idImpianto);
+        } else if (idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsesto(idImpianto, idPalinsesto);
         } else if(!idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartellone(idImpianto, idPalinsesto, idCartellone);
@@ -57,7 +59,6 @@ public class ImpressioniController {
         }
 
         model.addAttribute("impressione", impressione);
-        System.out.println(impressione);
         return "report";
     }
 

@@ -1,29 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Report di Visualizzazione</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        table {
+            width: 45%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 100px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #chart-container {
+            width: 45%;
+        }
+    </style>
 </head>
 <body>
 <h1>Report di Visualizzazione</h1>
-<table id="table">
-    <thead id="intestazione">
-
-    </thead>
-    <tbody id="corpo-tabella">
-
-    </tbody>
-</table>
+<div id="container">
+    <table id="table">
+        <thead id="intestazione"></thead>
+        <tbody id="corpo-tabella"></tbody>
+    </table>
+    <div id="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
 <script th:inline="javascript">
     /*<![CDATA[*/
     // Recupera i dati degli impianti dal modello
     var impressione = /*[[${impressione}]]*/ [];
-    console.log(impressione)
+    console.log(impressione);
 
     $(document).ready(function(){
         // Inizializza un set per le intestazioni
         var intestazioniGenerate = false;
+        var labels = [];
+        var durataTotaleData = [];
 
         // Itera su ogni impianto nell'array
         impressione.forEach(function(impression) {
@@ -34,7 +79,11 @@
             var timeStampFrom = impression.timestampFrom;
             var timestampTo = impression.timestampTo;
             var durataTotale = impression.durataTotale;
-            console.log("CIAO ", idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale)
+            console.log("CIAO ", idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale);
+
+            // Aggiungi dati per il grafico
+            labels.push(idImpianto + ' - ' + idCartellone);
+            durataTotaleData.push(durataTotale);
 
             if (!intestazioniGenerate) {
                 // Genera le intestazioni solo la prima volta
@@ -44,12 +93,35 @@
                     "ID Cartellone": idCartellone,
                     "Timestamp From": timeStampFrom,
                     "Timestamp To": timestampTo,
-                    "Durata": durataTotale
+                    "Durata Totale": durataTotale
                 });
                 intestazioniGenerate = true;
             }
 
             aggiungiRiga(idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale);
+        });
+
+        // Genera il grafico
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Durata Totale (secondi)',
+                    data: durataTotaleData,
+                    backgroundColor: 'rgba(60, 137, 176, 0.2)',
+                    borderColor: 'rgba(60, 137, 176, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     });
 
@@ -61,12 +133,16 @@
             "ID Cartellone": idCartellone,
             "Timestamp From": timeStampFrom,
             "Timestamp To": timestampTo,
-            "Durata totale": durataTotale
+            "Durata Totale": durataTotale
         };
 
         for (var chiave in valori) {
             if (valori[chiave] !== null && valori[chiave] !== undefined) {
-                row.append('<td>' + valori[chiave] + '</td>');
+                if (valori[chiave] === durataTotale) {
+                    row.append('<td>' + valori[chiave] + ' secondi</td>');
+                } else {
+                    row.append('<td>' + valori[chiave] + '</td>');
+                }
             }
         }
         $('#corpo-tabella').append(row);

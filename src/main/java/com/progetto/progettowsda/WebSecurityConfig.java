@@ -34,13 +34,14 @@ public class WebSecurityConfig {
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth
                         .requestMatchers("/GestioneImpianti/**").authenticated()
+                        .requestMatchers("/Impressioni/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/GestioneImpianti/gestione_impianti.html", true)
+                        .defaultSuccessUrl("/GestioneImpianti/index.html", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())
-                .exceptionHandling(eh -> eh.accessDeniedPage("/403")).build()
+                .exceptionHandling(eh -> eh.accessDeniedPage("/403")).headers(headers -> headers.frameOptions().sameOrigin()).build()
         ;
     }
 }
