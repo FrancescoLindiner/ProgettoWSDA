@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_gestione_impianti.css">
+    <script src="js_gestione_impianti.js"></script>
     <title>Aggiungi Impianto</title>
     <style>
         body {
@@ -92,6 +93,11 @@
             var latitudine = $("#latitudine").val();
             var longitudine = $("#longitudine").val();
             var palinsesto = $("#palinsesto").val();
+
+            if (!idImpianto || !descrizione || !latitudine || !longitudine || !palinsesto) {
+                showToast("Compila tutti i campi", false);
+                return;
+            }
 
             var data = {
                 idImpianto: idImpianto,

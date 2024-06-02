@@ -2,7 +2,6 @@ package com.progetto.progettowsda.Service;
 
 import com.progetto.progettowsda.Model.Impianto;
 import com.progetto.progettowsda.Repository.ImpiantoRepository;
-import com.progetto.progettowsda.Repository.PalinsestoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,6 @@ import java.util.List;
 public class ImpiantoService {
     @Autowired
     private ImpiantoRepository impiantoRepository;
-
-    @Autowired
-    private PalinsestoRepository palinsestoRepository;
-
 
     public List<Impianto> getAllImpianti() {
         // Ottieni tutti gli impianti
@@ -86,9 +81,5 @@ public class ImpiantoService {
             e.printStackTrace(); // Oppure gestisci l'eccezione in base alle tue esigenze
             return false; // Si è verificato un errore durante l'aggiunta dell'impianto
         }
-    }
-
-    public Impianto isAttivo(String id) {
-        return impiantoRepository.findByIdImpianto(id);
     }
 }

@@ -49,14 +49,6 @@ public class ImpressioniService {
         return impressioniRepository.getImpiantoAttivo();
     }
 
-    public List<ImpressioneDTO> getPalinsestoAttivo() {
-        return impressioniRepository.getPalinsestoAttivo();
-    }
-
-    public List<ImpressioneDTO> getCartelloneAttivo() {
-        return impressioniRepository.getCartelloneAttivo();
-    }
-
     public List<ImpressioneDTO> searchImpianto(String idImpianto) {
         return impressioniRepository.searchImpianto(idImpianto);
     }

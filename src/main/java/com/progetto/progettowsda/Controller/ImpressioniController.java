@@ -36,7 +36,7 @@ public class ImpressioniController {
             @RequestParam(required = false) LocalDateTime timestampTo,
             Model model) {
         List<ImpressioneDTO> impressione;
-        // idImpianto e idPalinsesto ci sono sempre
+        // idImpianto c'è sempre
         System.out.println(idPalinsesto);
         if (idPalinsesto.equals("-")) {
                 impressione = impressioniService.searchImpianto(idImpianto);
@@ -75,21 +75,9 @@ public class ImpressioniController {
 
     @GetMapping("/query-personalizzate")
     public String query_personalizzate(@RequestParam String query, Model model) {
-        if (query.equals("query1")) {
-            List<ImpressioneDTO> impressione = impressioniService.getImpiantoAttivo();
-            model.addAttribute("impressione", impressione);
-            model.addAttribute("query", query);
-            return "query_personalizzata";
-        } else if (query.equals("query2")) {
-            List<ImpressioneDTO> impressione = impressioniService.getPalinsestoAttivo();
-            model.addAttribute("impressione", impressione);
-            model.addAttribute("query", query);
-            return "query_personalizzata";
-        } else {
-            List<ImpressioneDTO> impressione = impressioniService.getCartelloneAttivo();
-            model.addAttribute("impressione", impressione);
-            model.addAttribute("query", query);
-            return "query_personalizzata";
-        }
+        List<ImpressioneDTO> impressione = impressioniService.getImpiantoAttivo();
+        model.addAttribute("impressione", impressione);
+        model.addAttribute("query", query);
+        return "query_personalizzata";
     }
 }

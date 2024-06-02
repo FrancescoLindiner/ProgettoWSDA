@@ -40,7 +40,6 @@ public class ModificaImpiantiController {
                                    @RequestParam float latitudine,
                                    @RequestParam float longitudine,
                                    Model model) {
-        System.out.println(idImpianto + ", " + descrizione + ", " + stato + ", " + latitudine + ", " + longitudine);
         Boolean isUpdated = impiantoService.aggiornaImpianto(idImpianto, descrizione, stato, latitudine, longitudine);
         model.addAttribute("isUpdated", isUpdated);
         return "messaggio";

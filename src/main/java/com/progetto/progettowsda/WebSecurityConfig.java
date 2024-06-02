@@ -38,7 +38,7 @@ public class WebSecurityConfig {
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/GestioneImpianti/index.html", true)
+                        .defaultSuccessUrl("/GestioneImpianti/gestione.html", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())
                 .exceptionHandling(eh -> eh.accessDeniedPage("/403")).headers(headers -> headers.frameOptions().sameOrigin()).build()

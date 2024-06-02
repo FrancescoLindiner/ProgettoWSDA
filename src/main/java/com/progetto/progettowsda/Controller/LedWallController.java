@@ -29,7 +29,7 @@ public class LedWallController {
                 return "error";
             }
         } catch (NullPointerException e) {
-            e.printStackTrace(); // Stampa la traccia dell'eccezione per il debug
+            e.printStackTrace();
             return "error";
         }
     }

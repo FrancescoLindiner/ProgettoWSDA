@@ -6,6 +6,25 @@ table {
     background-color: #f9f9f9;
 }
 
+input[type='text'], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Assicura che il padding non aumenti le dimensioni totali */
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Stile dei checkbox */
+input[type='checkbox'] {
+    margin-right: 5px;
+}
+
+.container {
+    padding-bottom: 85px;
+}
+
 table, th, td {
     border: 1px solid #ddd;
 }
