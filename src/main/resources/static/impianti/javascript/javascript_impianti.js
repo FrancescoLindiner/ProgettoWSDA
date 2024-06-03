@@ -57,7 +57,8 @@ function loadNextContent(url, idImpianto, idPalinsesto) {
             for (let i = 0; i < elements.length; i++) {
                 const durata = parseInt(elements[i].getAttribute('durata'));
                 const file = elements[i].getElementsByTagName('file')[0].textContent;
-                palinsesto.push({ durata, file });
+                const idCartellone = elements[i].getElementsByTagName('id')[0].textContent;
+                palinsesto.push({ durata, file, idCartellone });
             }
 
             let currentIndex = 0;
@@ -65,17 +66,7 @@ function loadNextContent(url, idImpianto, idPalinsesto) {
                 const elemento = palinsesto[currentIndex];
                 document.getElementById('content').innerHTML = `<object type="text/html" data="${elemento.file}" style="width:100%; height:calc(100vh - 60px);"></object>`;
 
-                const filePath = palinsesto[currentIndex].file; // per estrarre il nome del cartellone
-                const fileName = filePath.split("/").pop();
-
-                fetch('../cartelloni.json')
-                    .then(response => response.json())
-                    .then(mapping => {
-                        const idCartellone = mapping[fileName];
-                        inviaSegnalazione(idImpianto, idPalinsesto, idCartellone, elemento.durata);
-                    })
-                    .catch(error => console.error('Errore nel caricamento del mapping:', error));
-
+                inviaSegnalazione(idImpianto, idPalinsesto, elemento.idCartellone, elemento.durata);
 
                 currentIndex = (currentIndex + 1) % palinsesto.length;
                 setTimeout(playNext, elemento.durata * 1000);

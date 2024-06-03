@@ -38,6 +38,7 @@ public class WebSecurityConfig {
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
+                        .loginPage("/login").permitAll()
                         .defaultSuccessUrl("/GestioneImpianti/gestione.html", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())

@@ -57,6 +57,7 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
     </style>
 </head>
 <body>
@@ -64,7 +65,7 @@
 <div class="container">
     <h1>Aggiungi Impianto</h1>
     <label for="idImpianto">ID:</label>
-    <input type="text" id="idImpianto" name="idImpianto" pattern="[I]\d+" title="Inserisci un ID nel formato Inumber" required>
+    <input type="text" id="idImpianto" name="idImpianto" required>
 
     <label for="descrizione">Descrizione:</label>
     <input type="text" id="descrizione" name="descrizione" required>
@@ -93,6 +94,16 @@
             var latitudine = $("#latitudine").val();
             var longitudine = $("#longitudine").val();
             var palinsesto = $("#palinsesto").val();
+
+            if(!idImpianto.match(/^I\d+$/)) {
+                showToast("Inserisci un ID nel formato I seguito da un numero", false)
+                return;
+            }
+
+            if(!palinsesto.match(/^P\d+$/)) {
+                showToast("Inserisci un ID nel formato P seguito da un numero", false)
+                return;
+            }
 
             if (!idImpianto || !descrizione || !latitudine || !longitudine || !palinsesto) {
                 showToast("Compila tutti i campi", false);

@@ -58,13 +58,12 @@ public class Impianto {
     }
 
     public void setPalinsesto_path(String palinsesto_path) {
-        // Estrai il numero dalla stringa palinsesto_path
-        String numero = palinsesto_path.substring(1); // Prendi tutto tranne il primo carattere "P"
+        // estraggo il numero dalla stringa palinsesto_path
+        String numero = palinsesto_path.substring(1); // prendo tutto tranne il primo carattere "P"
 
-        // Costruisci il percorso XML con il numero estratto
+        // costruiso il percorso XML con il numero estratto
         String percorso_xml = "../../file_xml/palinsesto" + numero + ".xml";
 
-        // Imposta il percorso XML
         this.palinsesto_path = percorso_xml;
     }
 

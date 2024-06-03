@@ -20,7 +20,6 @@
             justify-content: center;
             align-items: flex-start;
             gap: 20px;
-            max-width: 1200px;
             width: 100%;
         }
         table {
@@ -39,7 +38,7 @@
             background-color: #f2f2f2;
         }
         #chart-container {
-            width: 45%;
+            width: 55%;
         }
     </style>
 </head>
@@ -56,19 +55,15 @@
 </div>
 <script th:inline="javascript">
     /*<![CDATA[*/
-    // Recupera i dati degli impianti dal modello
     var impressione = /*[[${impressione}]]*/ [];
     console.log(impressione);
 
     $(document).ready(function(){
-        // Inizializza un set per le intestazioni
         var intestazioniGenerate = false;
         var labels = [];
         var durataTotaleData = [];
 
-        // Itera su ogni impianto nell'array
         impressione.forEach(function(impression) {
-            // Ottieni i valori desiderati
             var idImpianto = impression.idImpianto;
             var idPalinsesto = impression.idPalinsesto;
             var idCartellone = impression.idCartellone;
@@ -76,12 +71,10 @@
             var timestampTo = impression.timestampTo;
             var durataTotale = impression.durataTotale;
 
-            // Aggiungi dati per il grafico
             labels.push(idImpianto + ' - ' + idCartellone);
             durataTotaleData.push(durataTotale);
 
             if (!intestazioniGenerate) {
-                // Genera le intestazioni solo la prima volta
                 generaIntestazioni({
                     "ID Impianto": idImpianto,
                     "ID Palinsesto": idPalinsesto,
@@ -96,7 +89,6 @@
             aggiungiRiga(idImpianto, idPalinsesto, idCartellone, timeStampFrom, timestampTo, durataTotale);
         });
 
-        // Genera il grafico
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',

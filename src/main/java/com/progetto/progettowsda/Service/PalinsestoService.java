@@ -12,7 +12,6 @@ public class PalinsestoService {
 
     @Autowired
     private PalinsestoRepository palinsestoRepository;
-
     public List<Palinsesto> getAllPalinsesti() {
         return palinsestoRepository.findAll();
     }

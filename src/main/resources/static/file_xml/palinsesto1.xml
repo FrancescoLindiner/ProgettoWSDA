@@ -4,17 +4,22 @@
             xsi:noNamespaceSchemaLocation="../palinsesto.xsd">
     <elemento durata="15">
         <file>../../file_html/caffe.html</file>
+        <id>C01</id>
     </elemento>
     <elemento durata="10">
         <file>../../file_html/coca_cola.html</file>
+        <id>C02</id>
     </elemento>
     <elemento durata="15">
         <file>../../file_html/concessionaria.html</file>
+        <id>C03</id>
     </elemento>
     <elemento durata="20">
         <file>../../file_html/serieTV.html</file>
+        <id>C06</id>
     </elemento>
     <elemento durata="15">
         <file>../../file_html/sushi.html</file>
+        <id>C07</id>
     </elemento>
 </palinsesto>

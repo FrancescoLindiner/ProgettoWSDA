@@ -11,12 +11,12 @@ input[type='text'], select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Assicura che il padding non aumenti le dimensioni totali */
+    box-sizing: border-box; /* Ensure padding does not increase the overall size */
     font-size: 14px;
     margin-bottom: 10px;
 }
 
-/* Stile dei checkbox */
+/* Style for checkboxes */
 input[type='checkbox'] {
     margin-right: 5px;
 }
@@ -37,7 +37,6 @@ th, td {
 .toast {
     visibility: hidden;
     min-width: 250px;
-    margin-left: -125px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -48,6 +47,8 @@ th, td {
     left: 50%;
     bottom: 30px;
     font-size: 18px;
+    margin-right: -50%;
+    transform: translateX(-50%);
 }
 
 .toast.show {
@@ -82,9 +83,9 @@ td {
     background-color: #e9ecef;
 }
 
-/* Aggiunta di colore al passaggio del mouse */
-tr:hover {
-    background-color: #d1ecf1;
+/* Add hover color to table rows */
+tr:hover td {
+    background-color: #9ce4ff;
 }
 
 .button_aggiungi_impianti {
@@ -108,4 +109,4 @@ tr:hover {
 
 .button_aggiungi_impianti:hover {
     background-color: #45a049;
-} 
+}

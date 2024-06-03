@@ -1,7 +1,5 @@
-<!DOCTYPE palinsesto [
-        <!ELEMENT palinsesto (elemento)*>
-        <!ELEMENT elemento (file)*>
-        <!ATTLIST elemento
-                durata CDATA #REQUIRED>
+<!ELEMENT palinsesto (elemento+)>
+        <!ELEMENT elemento (file, id)>
+        <!ATTLIST elemento durata CDATA #REQUIRED>
         <!ELEMENT file (#PCDATA)>
-        ]>
+        <!ELEMENT id (#PCDATA)>

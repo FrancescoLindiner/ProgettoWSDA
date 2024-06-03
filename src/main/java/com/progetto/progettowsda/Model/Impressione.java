@@ -27,7 +27,6 @@ public class Impressione {
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
-    // Getters and Setters
     public Integer getIdSegnalazione() {
         return idSegnalazione;
     }

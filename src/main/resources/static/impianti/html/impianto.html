@@ -23,11 +23,10 @@
     const urlParams = new URLSearchParams(window.location.search);
     const idImpianto = urlParams.get('id');
 
-    // Caricamento del contenuto dell'impianto
     $.get("/wsda", { id: idImpianto })
         .done(function(data) {
             console.log(data)
-            $('#content').html(data); // Aggiorna il contenuto della pagina con la vista restituita
+            $('#content').html(data);
         })
         .fail(function() {
             console.error("Error loading ID.");
@@ -37,7 +36,7 @@
         location.reload();
     }
 
-    // Ricarica la pagina ogni 2 minuti
+    // ricarica la pagina ogni 2 minuti
     setInterval(ricaricaPagina, 120000);
 </script>
 </body>

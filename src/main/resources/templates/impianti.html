@@ -9,15 +9,11 @@
 
 <script th:inline="javascript">
     /*<![CDATA[*/
-    // Recupera i dati degli impianti dal modello
     var impianti = /*[[${impianti}]]*/ [];
     var palinsesti = /*[[${palinsesti}]]*/ [];
 
-    // Esegui questa funzione al caricamento della pagina
     $(document).ready(function(){
-        // Itera su ogni impianto nell'array
         impianti.forEach(function(impianto) {
-            // Ottieni i valori desiderati
             var idImpianto = impianto.idImpianto;
             var stato = impianto.stato;
             var descrizione = impianto.descrizione;
@@ -26,7 +22,6 @@
 
             const idPalinsesto = impianto.palinsesto_path.match(/\d+/)[0];
 
-            // Aggiungi una nuova riga alla tabella per ogni impianto
             aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, "P"+idPalinsesto, palinsesti);
         });
     });

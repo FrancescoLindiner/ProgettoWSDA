@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ImpiantoRepository extends JpaRepository<Impianto, Long> {
     Impianto findByIdImpianto(String idImpianto);
-
     Boolean existsByIdImpianto(String idImpianto);
 }

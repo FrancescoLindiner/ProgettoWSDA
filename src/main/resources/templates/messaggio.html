@@ -8,9 +8,7 @@
 </head>
 <body>
 <script th:inline="javascript">
- /* Estrai il valore booleano dal modello Thymeleaf */
- var isUpdated = [[${isUpdated}]]; // Supponendo che "isSuccess" sia il nome dell'attributo booleano nel modello
- /* Mostra il messaggio in base al valore booleano */
+ var isUpdated = [[${isUpdated}]];
  if (isUpdated) {
   showToast("Dati aggiornati con successo", isUpdated);
  } else {

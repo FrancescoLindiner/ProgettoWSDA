@@ -59,13 +59,9 @@ public class ImpiantoService {
     }
 
     public boolean aggiungiImpianto(String idImpianto, String descrizione, float latitudine, float longitudine, String palinsestoPath, boolean stato) {
-        try {
-            // Verifica se l'ID dell'impianto è già presente nel repository
-            if (impiantoRepository.existsByIdImpianto(idImpianto)) {
-                return false; // L'ID dell'impianto è duplicato, quindi non possiamo aggiungere l'impianto
-            }
-
-            // Creazione del nuovo impianto e impostazione dei valori
+        if (impiantoRepository.existsByIdImpianto(idImpianto)) {
+            return false;
+        } else {
             Impianto nuovoImpianto = new Impianto();
             nuovoImpianto.setIdImpianto(idImpianto);
             nuovoImpianto.setDescrizione(descrizione);
@@ -74,12 +70,8 @@ public class ImpiantoService {
             nuovoImpianto.setPalinsesto_path(palinsestoPath);
             nuovoImpianto.setStato(stato);
 
-            // Salvataggio del nuovo impianto nel repository
             impiantoRepository.save(nuovoImpianto);
-            return true; // L'aggiunta dell'impianto è avvenuta con successo
-        } catch (Exception e) {
-            e.printStackTrace(); // Oppure gestisci l'eccezione in base alle tue esigenze
-            return false; // Si è verificato un errore durante l'aggiunta dell'impianto
+            return true;
         }
     }
 }

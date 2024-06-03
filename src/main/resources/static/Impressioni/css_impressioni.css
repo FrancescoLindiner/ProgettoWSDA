@@ -44,9 +44,7 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#idCartellone {
-    max-width: 50px;
-}
+
 
 .form-container {
     display: flex;
@@ -79,10 +77,11 @@ input[type="submit"] {
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 15px 80px; /* Aumenta la larghezza del pulsante */
+    padding: 15px 80px;
     border-radius: 8px;
-    font-size: 16px;
-    transition: background-color 0.5s, color 0.5s; /* Aggiungi una transizione per una transizione fluida */
+    font-size: 20px;
+    width: 280px;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 

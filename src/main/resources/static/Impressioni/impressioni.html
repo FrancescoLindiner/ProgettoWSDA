@@ -28,7 +28,7 @@
   </div>
   <div class="form-row">
     <label for="idCartellone">ID Cartellone:</label>
-    <input type="text" id="idCartellone" name="idCartellone">
+    <select id="idCartellone" name="idCartellone"></select>
   </div>
   <div class="form-row">
     <label for="timestampFrom">Timestamp Da:</label>
@@ -71,9 +71,10 @@
         timestampTo: timestampTo
       };
 
+      console.log("data" + idImpianto,idPalinsesto,idCartellone,timestampFrom,timestampTo)
+
       $.get("/report", data)
               .done(function(response){
-                console.log(response)
                 $('#report').html(response);
               })
               .fail(function(xhr, status, error){

@@ -2,10 +2,11 @@
 <script th:inline="javascript">
     var impianti = /*[[${impianti}]]*/ [];
     var palinsesti = /*[[${palinsesti}]]*/ [];
+    var cartelloni = /*[[${cartelloni}]]*/ [];
 
-    // Creare un array unico contenente gli ID di impianti e palinsesti
     var idImpianti = [];
     var idPalinsesti = [];
+    var idCartelloni = [];
 
     impianti.forEach(function (impianto) {
         idImpianti.push(impianto.idImpianto);
@@ -15,6 +16,9 @@
         idPalinsesti.push(palinsesto.idPalinsesto);
     });
 
-    // Chiamare la funzione addOptionsToSelect con l'array di ID
-    addOptionsToSelect(idImpianti, idPalinsesti);
+    cartelloni.forEach(function (cartellone) {
+        idCartelloni.push(cartellone.id_cartellone);
+    });
+
+    addOptionsToSelect(idImpianti, idPalinsesti, idCartelloni);
 </script>

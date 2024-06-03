@@ -1,8 +1,10 @@
 package com.progetto.progettowsda.Controller;
 
+import com.progetto.progettowsda.Model.Cartellone;
 import com.progetto.progettowsda.Model.Impianto;
 import com.progetto.progettowsda.Model.ImpressioneDTO;
 import com.progetto.progettowsda.Model.Palinsesto;
+import com.progetto.progettowsda.Service.CartelloneService;
 import com.progetto.progettowsda.Service.ImpiantoService;
 import com.progetto.progettowsda.Service.ImpressioniService;
 import com.progetto.progettowsda.Service.PalinsestoService;
@@ -27,6 +29,9 @@ public class ImpressioniController {
     @Autowired
     private PalinsestoService palinsestoService;
 
+    @Autowired
+    private CartelloneService cartelloneService;
+
     @GetMapping("/report")
     public String searchImpression(
             @RequestParam(required = false) String idImpianto,
@@ -37,22 +42,22 @@ public class ImpressioniController {
             Model model) {
         List<ImpressioneDTO> impressione;
         // idImpianto c'è sempre
-        System.out.println(idPalinsesto);
         if (idPalinsesto.equals("-")) {
                 impressione = impressioniService.searchImpianto(idImpianto);
-        } else if (idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
+        } else if (idCartellone.equals("-") && timestampTo==null && timestampFrom==null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsesto(idImpianto, idPalinsesto);
-        } else if(!idCartellone.isEmpty() && timestampTo==null && timestampFrom==null) {
+        } else if(!idCartellone.equals("-") && timestampTo==null && timestampFrom==null) {
+            System.out.println(idCartellone);
             impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartellone(idImpianto, idPalinsesto, idCartellone);
-        } else if(idCartellone.isEmpty() && timestampTo!=null && timestampFrom==null) {
+        } else if(idCartellone.equals("-") && timestampTo!=null && timestampFrom==null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoDateTo(idImpianto, idPalinsesto, timestampTo);
-        } else if(!idCartellone.isEmpty() && timestampTo!=null && timestampFrom==null) {
+        } else if(!idCartellone.equals("-") && timestampTo!=null && timestampFrom==null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartelloneDateTo(idImpianto, idPalinsesto, idCartellone, timestampTo);
-        } else if(idCartellone.isEmpty() && timestampTo==null && timestampFrom!=null) {
+        } else if(idCartellone.equals("-") && timestampTo==null && timestampFrom!=null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoDateFrom(idImpianto, idPalinsesto, timestampFrom);
-        } else if(!idCartellone.isEmpty() && timestampTo==null && timestampFrom!=null) {
+        } else if(!idCartellone.equals("-") && timestampTo==null && timestampFrom!=null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoIdCartelloneDateFrom(idImpianto, idPalinsesto, idCartellone, timestampFrom);
-        } else if(idCartellone.isEmpty() && timestampTo!=null && timestampFrom!=null) {
+        } else if(idCartellone.equals("-") && timestampTo!=null && timestampFrom!=null) {
             impressione = impressioniService.searchIdImpiantoIdPalinsestoDate(idImpianto, idPalinsesto, timestampTo, timestampFrom);
         } else {
             impressione = impressioniService.searchAll(idImpianto, idPalinsesto, idCartellone, timestampFrom, timestampTo);
@@ -66,9 +71,11 @@ public class ImpressioniController {
     public String impression(Model model) {
         List<Impianto> impianti = impiantoService.getAllImpianti();
         List<Palinsesto> palinsesti = palinsestoService.getAllPalinsesti();
+        List<Cartellone> cartelloni = cartelloneService.getAllCartelloni();
 
         model.addAttribute("impianti", impianti);
         model.addAttribute("palinsesti", palinsesti);
+        model.addAttribute("cartelloni", cartelloni);
 
         return "impressioni_view";
     }
