@@ -1,3 +1,45 @@
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #3c89b0;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -21,22 +63,22 @@ input[type='checkbox'] {
     margin-right: 5px;
 }
 
-.container {
-    padding-bottom: 85px;
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
+td {
+    background-color: #f2f2f2;
     padding: 12px;
     text-align: left;
 }
 
 .toast {
     visibility: hidden;
-    min-width: 250px;
+    min-width: 270px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -49,6 +91,7 @@ th, td {
     font-size: 18px;
     margin-right: -50%;
     transform: translateX(-50%);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
 .toast.show {
@@ -74,18 +117,8 @@ th, td {
     background-color: #f44336;
 }
 
-th {
-    background-color: #94cbee;
-    color: #fff;
-}
-
-td {
-    background-color: #e9ecef;
-}
-
-/* Add hover color to table rows */
 tr:hover td {
-    background-color: #9ce4ff;
+    background-color: #ddd;
 }
 
 .button_aggiungi_impianti {
@@ -96,11 +129,12 @@ tr:hover td {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
+    width: 250px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
     position: fixed; /* Position fixed instead of absolute */
     bottom: 20px;
     left: 20px;

@@ -10,9 +10,9 @@
 <script th:inline="javascript">
  var isUpdated = [[${isUpdated}]];
  if (isUpdated) {
-  showToast("Dati aggiornati con successo", isUpdated);
+  showToast("Operazione eseguita con successo", isUpdated);
  } else {
-  showToast("Errore durante l'aggiornamento", isUpdated);
+  showToast("Si è verificato un errore, riprova", isUpdated);
  }
 </script>
 
