@@ -4,15 +4,15 @@
             xsi:noNamespaceSchemaLocation="../palinsesto.xsd">
     <elemento durata="20">
         <file>../../file_html/pneumatici.html</file>
-        <id>C04</id>
+        <id>C4</id>
     </elemento>
     <elemento durata="15">
         <file>../../file_html/telefoni.html</file>
-        <id>C08</id>
+        <id>C8</id>
     </elemento>
     <elemento durata="15">
         <file>../../file_html/scarpe.html</file>
-        <id>C06</id>
+        <id>C6</id>
     </elemento>
     <elemento durata="20">
         <file>../../file_html/voli.html</file>
@@ -20,6 +20,6 @@
     </elemento>
     <elemento durata="15">
         <file>../../file_html/caffe.html</file>
-        <id>C01</id>
+        <id>C1</id>
     </elemento>
 </palinsesto>
