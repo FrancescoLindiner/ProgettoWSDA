@@ -54,18 +54,18 @@
             var longitudine = $("#longitudine").val();
             var palinsesto = $("#palinsesto").val();
 
+            if (!idImpianto || !descrizione || !latitudine || !longitudine || !palinsesto) {
+                showToast("Compila tutti i campi", false);
+                return;
+            }
+
             if(!idImpianto.match(/^I\d+$/)) {
-                showToast("Inserisci un ID nel formato I seguito da un numero", false)
+                showToast("Inserisci un ID nel formato I seguito da un numero (es: I42)", false)
                 return;
             }
 
             if(!palinsesto.match(/^P\d+$/)) {
-                showToast("Inserisci un ID nel formato P seguito da un numero", false)
-                return;
-            }
-
-            if (!idImpianto || !descrizione || !latitudine || !longitudine || !palinsesto) {
-                showToast("Compila tutti i campi", false);
+                showToast("Inserisci un ID nel formato P seguito da un numero (es: P42)", false)
                 return;
             }
 

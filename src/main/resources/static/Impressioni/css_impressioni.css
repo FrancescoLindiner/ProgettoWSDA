@@ -5,8 +5,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Imposta i figli in colonna */
-    align-items: center; /* Centra orizzontalmente */
+    flex-direction: column;
+    align-items: center;
 }
 
 h1, h2 {
@@ -24,7 +24,7 @@ h1, h2 {
     padding: 10px;
     border-radius: 8px;
     font-size: 14px;
-    transition: background-color 0.5s, color 0.5s; /* Aggiungi una transizione per una transizione fluida */
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .button-container #button_impianto_più_attivo:hover,
@@ -45,10 +45,10 @@ h1, h2 {
 
 .form-container {
     display: flex;
-    flex-direction: row; /* Stack elements horizontally */
-    flex-wrap: wrap; /* Allow elements to wrap to new line */
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
-    align-items: center; /* Align items vertically centered */
+    align-items: center;
 }
 
 .form-row {

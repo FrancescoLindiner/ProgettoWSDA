@@ -62,9 +62,8 @@ public class Impianto {
         String numero = palinsesto_path.substring(1); // prendo tutto tranne il primo carattere "P"
 
         // costruiso il percorso XML con il numero estratto
-        String percorso_xml = "../../file_xml/palinsesto" + numero + ".xml";
 
-        this.palinsesto_path = percorso_xml;
+        this.palinsesto_path = "../../file_xml/palinsesto" + numero + ".xml";
     }
 
 
@@ -78,12 +77,10 @@ public class Impianto {
 
         if (matcher.find()) {
             String numero = matcher.group();
-            String risultato = "P" + numero;
 
-            System.out.println(risultato);
-            return risultato;
+            return "P" + numero;
         } else {
-            throw new IllegalStateException("No match found for palinsesto_path");
+            throw new IllegalStateException("Nessun match trovato");
         }
     }
 

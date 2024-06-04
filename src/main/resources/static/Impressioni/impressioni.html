@@ -71,8 +71,6 @@
         timestampTo: timestampTo
       };
 
-      console.log("data" + idImpianto,idPalinsesto,idCartellone,timestampFrom,timestampTo)
-
       $.get("/report", data)
               .done(function(response){
                 $('#report').html(response);

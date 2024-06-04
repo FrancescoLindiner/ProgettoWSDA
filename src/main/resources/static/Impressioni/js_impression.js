@@ -5,7 +5,6 @@ function addOptionsToSelect(impianti, palinsesti, cartelloni) {
     var selectIdCartellone = $("#idCartellone")
 
     impianti.forEach(function(impianto) {
-        // Crea un nuovo elemento option
         var option = $("<option>").text(impianto)
         selectIdImpianto.append(option);
     });
