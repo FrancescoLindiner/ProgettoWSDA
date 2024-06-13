@@ -23,6 +23,8 @@
             const idPalinsesto = impianto.palinsesto_path.match(/\d+/)[0];
 
             aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, "P"+idPalinsesto, palinsesti);
+            // idPalinsesto serve per mettere l'opzione di default nel select
+            // mentre palinsesti per mettere tutti i palinsesti disponibili nel select
         });
     });
     /*]]>*/

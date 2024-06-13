@@ -1,3 +1,5 @@
+// Funzione per aggiungere una riga alla tabella di gestione impianti
+
 function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, palinsesto_path, palinsesti) {
     var tbody = $("#corpo-tabella");
     var newRow = $("<tr>");
@@ -7,9 +9,11 @@ function aggiungiRiga(idImpianto, descrizione, stato, latitudine, longitudine, p
 
     var select = $("<select>");
 
+    // aggiungi l'opzione di default che è il palinsesto attuale dell'impianto
     var defaultOption = $("<option>").text(palinsesto_path).val(palinsesto_path).prop('selected', true);
     select.append(defaultOption);
 
+    // aggiungi i palinsesti al select
     palinsesti.forEach(function(palinsesto) {
         if (palinsesto.idPalinsesto !== palinsesto_path) {
             var option = $("<option>").text(palinsesto.idPalinsesto).val(palinsesto.idPalinsesto);

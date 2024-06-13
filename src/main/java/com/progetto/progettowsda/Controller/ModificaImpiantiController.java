@@ -22,10 +22,13 @@ public class ModificaImpiantiController {
     @Autowired
     private PalinsestoService palinsestoService;
 
+    /**
+     * metodo per popolare la pagina di gestione impianti
+     * **/
     @GetMapping("/impianti")
     public String getAllImpianti(Model model) {
         List<Impianto> impianti = impiantoService.getAllImpianti();
-        List<Palinsesto> palinsesti = palinsestoService.getAllPalinsesti();
+        List<Palinsesto> palinsesti = palinsestoService.getAllPalinsesti(); // prendo anche i palinsesti per mettere tutti i palinsesti diponibili nel select
 
         model.addAttribute("palinsesti", palinsesti);
         model.addAttribute("impianti", impianti);
@@ -33,6 +36,8 @@ public class ModificaImpiantiController {
         return "impianti";
     }
 
+    // questi due metodi potevano essere uniti in uno solo
+    // tanto l'aggiornamento di un attributo con lo stesso valore non ha effetto
     @PostMapping("/aggiorna")
     public String aggiornaImpianto(@RequestParam String idImpianto,
                                    @RequestParam String descrizione,
@@ -65,6 +70,9 @@ public class ModificaImpiantiController {
         return "messaggio";
     }
 
+
+    // metodo non usato
+    // da cancellare
     @GetMapping("/aggiornaStato")
     public String aggiornaStato(@RequestParam(name = "stato") boolean stato, @RequestParam(name = "idImpianto") String idImpianto, Model model) {
         Boolean isUpdated = impiantoService.aggiornaStato(idImpianto, stato);

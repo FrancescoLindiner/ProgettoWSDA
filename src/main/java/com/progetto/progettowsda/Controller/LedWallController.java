@@ -15,19 +15,25 @@ public class LedWallController {
     private ImpiantoService impiantoService;
 
 
+    /**
+     * metodo per gestire le richieste GET che vengono fatte dagli impianti
+     * **/
     @GetMapping("/wsda")
     public String handleQueryRequest(@RequestParam(name="id", required=false) String id, Model model) {
         Impianto impianto = impiantoService.getPalinsestoByIdImpianto(id);
-            if (impianto != null && impianto.isStato()) {
-                model.addAttribute("idPalinsesto", impianto.getIdPalinsesto());
-                model.addAttribute("pathPalinsesto", impianto.getPalinsesto_path());
+            if (impianto != null && impianto.isStato()) { // se non trovo l'impianto ritorno la schermata di errore nera
+                model.addAttribute("idPalinsesto", impianto.getIdPalinsesto()); // prendo l'id del palinsesto associato all'impianto
+                model.addAttribute("pathPalinsesto", impianto.getPalinsesto_path()); // prendo il path del palinsesto
                 model.addAttribute("idImpianto", id);
                 return "view";
             } else {
-                return "error";
+                return "error"; // schermata nera
             }
     }
 
+    /**
+     * metodo che è rimasto che ho dimenticato di cancellare
+     * **/
     @GetMapping("/segnala_stato")
     public String segnalaStato(@RequestParam(name = "id") String idImpianto,
                                @RequestParam(name = "stato") boolean stato) {

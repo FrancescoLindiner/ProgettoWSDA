@@ -12,7 +12,7 @@ public class CartelloneService {
     @Autowired
     private CartelloneRepository cartelloneRepository;
 
-    public List<Cartellone> getAllCartelloni() {
+    public List<Cartellone> getAllCartelloni() { // per popolare il select in Impressioni
         List<Cartellone> cartelloni = cartelloneRepository.findAll();
 
         return cartelloni;

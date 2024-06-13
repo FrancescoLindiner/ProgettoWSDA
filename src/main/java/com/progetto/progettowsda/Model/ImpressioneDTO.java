@@ -1,5 +1,9 @@
 package com.progetto.progettowsda.Model;
 
+/**
+ * DTO: Data Transfer Object
+ * **/
+
 public class ImpressioneDTO {
     private String idImpianto;
     private String idPalinsesto;

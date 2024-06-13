@@ -57,7 +57,7 @@ public class Impianto {
         this.stato = stato;
     }
 
-    public void setPalinsesto_path(String palinsesto_path) {
+    public void setPalinsesto_path(String palinsesto_path) { // in input abbiamo una stringa del tipo P1
         // estraggo il numero dalla stringa palinsesto_path
         String numero = palinsesto_path.substring(1); // prendo tutto tranne il primo carattere "P"
 

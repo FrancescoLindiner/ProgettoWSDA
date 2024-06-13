@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// Si potevano unsare i bean al posto delle entity
 @Entity
 @Table(name = "Cartellone")
 public class Cartellone {

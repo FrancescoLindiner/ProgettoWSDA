@@ -32,6 +32,9 @@ public class ImpressioniController {
     @Autowired
     private CartelloneService cartelloneService;
 
+    /**
+     * metodo per gestire le query personalizzate nella pagina impressioni
+     * **/
     @GetMapping("/report")
     public String searchImpression(
             @RequestParam(required = false) String idImpianto,
@@ -67,6 +70,9 @@ public class ImpressioniController {
         return "report";
     }
 
+    /**
+     * metodo per popolare la pagina impressioni.html
+     * **/
     @GetMapping("/impression")
     public String impression(Model model) {
         List<Impianto> impianti = impiantoService.getAllImpianti();
@@ -80,6 +86,9 @@ public class ImpressioniController {
         return "impressioni_view";
     }
 
+    /**
+     * metodo per gestire le query predefinite
+     * **/
     @GetMapping("/query-personalizzate")
     public String query_personalizzate(@RequestParam String query, Model model) {
         List<ImpressioneDTO> impressione = impressioniService.getImpiantoAttivo();

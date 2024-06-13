@@ -19,6 +19,7 @@ public class ImpiantoService {
         return impianti;
     }
 
+    // aggiornamento dati impianto
     public Boolean aggiornaImpianto(String idImpianto, String descrizione, boolean stato, float latitudine, float longitudine) {
         Impianto impianto = impiantoRepository.findByIdImpianto(idImpianto);
         if (impianto != null) {

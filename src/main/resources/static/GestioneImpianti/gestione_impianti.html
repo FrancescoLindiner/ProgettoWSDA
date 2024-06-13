@@ -79,7 +79,7 @@
             var idImpianto = row.find("td:first-child span").text();
             var campo = $(this).closest("td").index();
 
-            if (campo === 2) {
+            if (campo === 2) { // inutile si potevano inviare i dati tutti in una volta
                 var idPalinsesto = $(this).val();
                 inviaDatiPalinsesto(idImpianto, idPalinsesto);
             } else {
