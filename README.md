@@ -2,4 +2,4 @@
 
 GitHub repository for the university project in the Web System Design and Architecture course.
 
-For the other part of the project follow [this link](https://github.com/FrancescoLindiner/monitoraggio)
+This is the front-end part of the project. For the back-end part, follow [this link](https://github.com/FrancescoLindiner/monitoraggio)
